@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Pulkit Viradiya — Entrepreneur building consumer brands and clean energy from Ahmedabad, Gujarat. Candy Floss, Pujan Energy, Lenskart, Ximivogue." />
+<title>Pulkit Viradiya — Founder & Operator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+
+  :root {
+    --bg: #f3f1ea; --bg-deep: #ebe8df; --bg-card: #ffffff;
+    --ink: #1a1a1a; --ink-soft: #4a4a4a; --ink-mute: #8a8a85;
+    --line: #d8d4c8;
+    --dark-bg: #1f1f1d; --dark-bg-2: #2a2a26;
+    --dark-ink: #f3f1ea; --dark-ink-soft: #b8b5ac; --dark-line: #3a3a36;
+    --accent: #6b5443;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --maxw: 1240px;
+    --pad: clamp(1.25rem, 4vw, 2.5rem);
+    --section-pad: clamp(4rem, 9vw, 7rem);
+  }
+  [data-theme="dark"] {
+    --bg: #161614; --bg-deep: #1f1f1d; --bg-card: #1f1f1d;
+    --ink: #f3f1ea; --ink-soft: #c9c6bd; --ink-mute: #7a7872;
+    --line: #2e2e2a; --accent: #c69a7a;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--sans); background: var(--bg); color: var(--ink);
+    line-height: 1.6; font-size: 16px;
+    -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+    transition: background 0.4s, color 0.4s; overflow-x: hidden;
+  }
+  ::selection { background: var(--ink); color: var(--bg); }
+  .container { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--pad); }
+  section { padding: var(--section-pad) 0; }
+
+  /* Nav */
+  .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+    padding: 1.25rem var(--pad); display: flex; align-items: center;
+    justify-content: space-between; transition: background 0.4s, backdrop-filter 0.4s; }
+  .nav.scrolled { background: color-mix(in srgb, var(--bg) 85%, transparent);
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line); }
+  .nav-logo { display: inline-flex; align-items: center; gap: 0.6rem;
+    text-decoration: none; color: var(--ink); font-size: 0.72rem;
+    font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; }
+  .nav-logo .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--ink); }
+  .nav-right { display: flex; align-items: center; gap: 0.75rem; }
+  .menu-pill { display: inline-flex; align-items: center; gap: 0.6rem;
+    background: var(--ink); color: var(--bg); padding: 0.65rem 1.1rem 0.65rem 1.25rem;
+    border-radius: 999px; font-size: 0.7rem; font-weight: 600;
+    letter-spacing: 0.18em; text-transform: uppercase; border: none;
+    cursor: pointer; transition: transform 0.2s; font-family: var(--sans); }
+  .menu-pill:hover { transform: translateY(-1px); }
+  .menu-pill .lines { display: flex; flex-direction: column; gap: 3px; }
+  .menu-pill .lines span { display: block; width: 14px; height: 1.5px; background: var(--bg); }
+  .theme-toggle { background: transparent; border: 1px solid var(--line);
+    color: var(--ink); width: 38px; height: 38px; border-radius: 50%;
+    cursor: pointer; display: inline-flex; align-items: center;
+    justify-content: center; transition: border-color 0.2s, transform 0.3s; }
+  .theme-toggle:hover { border-color: var(--ink); transform: rotate(20deg); }
+  .theme-toggle svg { width: 16px; height: 16px; }
+  .theme-toggle .sun { display: none; }
+  [data-theme="dark"] .theme-toggle .sun { display: block; }
+  [data-theme="dark"] .theme-toggle .moon { display: none; }
+
+  /* Menu overlay */
+  .menu-overlay { position: fixed; inset: 0; background: var(--ink);
+    color: var(--bg); z-index: 100; display: flex; align-items: center;
+    justify-content: center; opacity: 0; pointer-events: none;
+    transition: opacity 0.4s; }
+  .menu-overlay.open { opacity: 1; pointer-events: auto; }
+  .menu-overlay ul { list-style: none; text-align: center;
+    display: flex; flex-direction: column; gap: 1.25rem; }
+  .menu-overlay a { font-family: var(--serif); font-size: clamp(2.25rem, 7vw, 4.5rem);
+    color: var(--bg); text-decoration: none; font-weight: 500;
+    line-height: 1; letter-spacing: -0.02em; transition: opacity 0.2s;
+    display: inline-block; }
+  .menu-overlay a:hover { opacity: 0.6; font-style: italic; }
+  .menu-overlay .close { position: absolute; top: 1.5rem; right: 1.5rem;
+    background: transparent; border: 1px solid var(--bg); color: var(--bg);
+    width: 44px; height: 44px; border-radius: 50%; cursor: pointer;
+    font-size: 1.25rem; }
+
+  /* Marquee */
+  .marquee { background: var(--ink); color: var(--bg); padding: 1.25rem 0;
+    overflow: hidden; white-space: nowrap; }
+  .marquee-track { display: inline-flex; animation: marquee 35s linear infinite; will-change: transform; }
+  .marquee-group { display: inline-flex; align-items: center; gap: 2.5rem; padding-right: 2.5rem; }
+  .marquee span { font-family: var(--serif); font-style: italic;
+    font-size: clamp(1.5rem, 3vw, 2.25rem); font-weight: 500; letter-spacing: -0.01em; }
+  .marquee .diamond { color: var(--accent); font-family: var(--sans);
+    font-style: normal; font-size: 1rem; }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* Section heading */
+  .section-label { font-size: 0.72rem; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--ink-mute); margin-bottom: 1.25rem;
+    display: inline-flex; align-items: center; gap: 0.75rem; }
+  .section-label::before { content: ''; width: 24px; height: 1px; background: var(--ink-mute); }
+
+  /* Footer */
+  footer { border-top: 1px solid var(--line); padding: 2.5rem 0; }
+  .footer-inner { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--pad);
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 1rem; font-size: 0.72rem; color: var(--ink-mute);
+    letter-spacing: 0.15em; text-transform: uppercase; font-weight: 500; }
+  .footer-inner .mark { font-family: var(--serif); font-style: italic;
+    text-transform: none; letter-spacing: 0; font-size: 0.95rem; }
+
+  /* Reveal */
+  .reveal { opacity: 0; transform: translateY(28px);
+    transition: opacity 1s cubic-bezier(0.2, 0.8, 0.2, 1),
+                transform 1s cubic-bezier(0.2, 0.8, 0.2, 1); }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+  .reveal.delay-1 { transition-delay: 0.08s; }
+  .reveal.delay-2 { transition-delay: 0.16s; }
+  .reveal.delay-3 { transition-delay: 0.24s; }
+  .reveal.delay-4 { transition-delay: 0.32s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    .reveal { opacity: 1; transform: none; }
+    .marquee-track { animation: none; }
+  }
+
+
+  /* Hero */
+  .hero { min-height: 100vh; padding-top: 6rem; display: flex;
+    align-items: center; position: relative; }
+  .hero-grid { display: grid; grid-template-columns: 1.05fr 1fr;
+    gap: clamp(2rem, 5vw, 4rem); align-items: center; width: 100%; }
+  @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; gap: 2.5rem; } }
+  .hero-eyebrow { font-size: 0.72rem; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--ink-mute); margin-bottom: 1.75rem;
+    display: inline-flex; align-items: center; gap: 0.75rem; }
+  .hero-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--ink-mute); }
+  .hero h1 { font-family: var(--sans); font-weight: 800;
+    font-size: clamp(2.75rem, 7.5vw, 6rem); line-height: 0.92; letter-spacing: -0.035em; }
+  .hero h1 .greeting { display: block; font-family: var(--serif);
+    font-style: italic; font-weight: 500; font-size: clamp(1.5rem, 3vw, 2.25rem);
+    color: var(--ink-soft); letter-spacing: -0.01em; line-height: 1; margin-bottom: 1.25rem; }
+  .hero h1 .line { display: block; }
+  .hero h1 em { font-family: var(--serif); font-style: italic;
+    font-weight: 500; color: var(--accent); letter-spacing: -0.02em; }
+  .hero-intro { margin-top: 2rem; font-size: 1.0625rem;
+    color: var(--ink-soft); max-width: 480px; line-height: 1.7; }
+  .hero-intro strong { color: var(--ink); font-weight: 600; }
+  .cta-pill { display: inline-flex; align-items: center; gap: 0.75rem;
+    margin-top: 2.5rem; background: var(--ink); color: var(--bg);
+    padding: 0.85rem 0.85rem 0.85rem 1.5rem; border-radius: 999px;
+    text-decoration: none; font-size: 0.75rem; font-weight: 600;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    transition: transform 0.3s, box-shadow 0.3s; }
+  .cta-pill:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(0,0,0,0.18); }
+  .cta-pill .arrow-circle { width: 28px; height: 28px; border-radius: 50%;
+    background: var(--bg); color: var(--ink); display: inline-flex;
+    align-items: center; justify-content: center; transition: transform 0.3s; }
+  .cta-pill:hover .arrow-circle { transform: rotate(-45deg); }
+
+  .hero-portrait { position: relative; aspect-ratio: 4 / 5; max-height: 620px;
+    border-radius: 50% 50% 8px 8px / 35% 35% 8px 8px;
+    background: linear-gradient(160deg, var(--bg-deep) 0%, #d4cfc1 100%);
+    overflow: hidden; display: flex; align-items: flex-end;
+    justify-content: center; box-shadow: inset 0 0 0 1px var(--line); }
+  [data-theme="dark"] .hero-portrait { background: linear-gradient(160deg, #232320 0%, #2c2c28 100%); }
+  .hero-portrait::before { content: ''; position: absolute; inset: 0;
+    background: radial-gradient(circle at 50% 30%, color-mix(in srgb, var(--accent) 20%, transparent) 0%, transparent 55%),
+                radial-gradient(circle at 30% 70%, color-mix(in srgb, var(--ink) 8%, transparent) 0%, transparent 50%); }
+  .portrait-placeholder { position: relative; z-index: 1; text-align: center;
+    padding-bottom: 2rem; color: var(--ink-mute); }
+  .portrait-placeholder .label { font-size: 0.7rem; letter-spacing: 0.22em;
+    text-transform: uppercase; font-weight: 500; }
+  .portrait-placeholder .silhouette { width: clamp(180px, 28vw, 280px);
+    height: clamp(220px, 35vw, 340px); margin: 0 auto 1rem;
+    background: radial-gradient(ellipse 35% 28% at 50% 22%, color-mix(in srgb, var(--ink) 35%, transparent) 0%, transparent 60%),
+                radial-gradient(ellipse 55% 45% at 50% 75%, color-mix(in srgb, var(--ink) 30%, transparent) 0%, transparent 65%);
+    opacity: 0.4; }
+  .hero-badge { position: absolute; bottom: 8%; left: -3%;
+    width: clamp(70px, 9vw, 100px); height: clamp(70px, 9vw, 100px);
+    border-radius: 50%; background: var(--ink); color: var(--bg);
+    display: flex; flex-direction: column; align-items: center;
+    justify-content: center; font-family: var(--sans); font-weight: 800;
+    font-size: clamp(1.5rem, 2.8vw, 2.25rem); letter-spacing: -0.04em;
+    line-height: 1; animation: badgeFloat 6s ease-in-out infinite; z-index: 2; }
+  .hero-badge::before { content: '04'; }
+  .hero-badge::after { content: 'chapters'; position: absolute; bottom: 18%;
+    font-family: var(--sans); font-size: 0.55rem; font-weight: 500;
+    letter-spacing: 0.2em; text-transform: uppercase; color: var(--bg); opacity: 0.7; }
+  @keyframes badgeFloat {
+    0%, 100% { transform: translateY(0) rotate(-5deg); }
+    50% { transform: translateY(-10px) rotate(5deg); }
+  }
+
+  .feature-row { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
+  @media (max-width: 800px) { .feature-row { grid-template-columns: repeat(2, 1fr); } }
+  .feature { padding: 1.75rem var(--pad); border-right: 1px solid var(--line); }
+  .feature:last-child { border-right: none; }
+  @media (max-width: 800px) {
+    .feature:nth-child(2) { border-right: none; }
+    .feature:nth-child(1), .feature:nth-child(2) { border-bottom: 1px solid var(--line); }
+  }
+  .feature-label { font-size: 0.7rem; letter-spacing: 0.18em;
+    text-transform: uppercase; font-weight: 600; color: var(--ink); margin-bottom: 0.5rem; }
+  .feature-desc { font-size: 0.85rem; color: var(--ink-mute); line-height: 1.55; }
+
+  .about-grid { display: grid; grid-template-columns: 1fr 1.4fr;
+    gap: clamp(2rem, 6vw, 5rem); align-items: start; }
+  @media (max-width: 900px) { .about-grid { grid-template-columns: 1fr; gap: 2.5rem; } }
+  .about h2 { font-family: var(--sans); font-weight: 800;
+    font-size: clamp(2rem, 4.5vw, 3.25rem); line-height: 1.0;
+    letter-spacing: -0.03em; text-transform: uppercase; }
+  .about h2 em { font-family: var(--serif); font-style: italic;
+    font-weight: 500; color: var(--accent); text-transform: none; letter-spacing: -0.02em; }
+  .about-prose p { font-size: 1.0625rem; color: var(--ink-soft);
+    line-height: 1.75; margin-bottom: 1.5rem; max-width: 60ch; }
+  .about-prose p:last-child { margin-bottom: 0; }
+  .about-prose strong { color: var(--ink); font-weight: 500; }
+  .about-prose .pullquote { font-family: var(--serif); font-style: italic;
+    font-weight: 500; font-size: clamp(1.35rem, 2.2vw, 1.75rem);
+    line-height: 1.35; color: var(--ink); padding: 0.5rem 0 0.5rem 1.5rem;
+    border-left: 2px solid var(--accent); margin: 1.5rem 0; max-width: 50ch; }
+
+  .stats { margin-top: 4rem; display: grid; grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid var(--line); }
+  @media (max-width: 700px) { .stats { grid-template-columns: repeat(2, 1fr); } }
+  .stat { padding: 1.75rem 1.25rem 1.25rem 0; border-right: 1px solid var(--line); }
+  .stat:last-child { border-right: none; }
+  @media (max-width: 700px) {
+    .stat:nth-child(2) { border-right: none; }
+    .stat:nth-child(1), .stat:nth-child(2) { border-bottom: 1px solid var(--line); padding-bottom: 1.5rem; }
+    .stat:nth-child(3), .stat:nth-child(4) { padding-top: 1.5rem; }
+  }
+  .stat-num { font-family: var(--sans); font-weight: 800;
+    font-size: clamp(2rem, 4vw, 2.75rem); letter-spacing: -0.03em;
+    line-height: 1; margin-bottom: 0.4rem; }
+  .stat-label { font-size: 0.7rem; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--ink-mute); font-weight: 500; }
+
+  .ventures { background: var(--dark-bg); color: var(--dark-ink); position: relative; }
+  [data-theme="dark"] .ventures { background: var(--dark-bg-2); }
+  .ventures .section-label { color: var(--dark-ink-soft); }
+  .ventures .section-label::before { background: var(--dark-ink-soft); }
+  .ventures h2 { font-family: var(--sans); font-weight: 800;
+    font-size: clamp(2.25rem, 5.5vw, 4rem); line-height: 0.95;
+    letter-spacing: -0.035em; text-transform: uppercase;
+    margin-bottom: 3.5rem; max-width: 900px; }
+  .ventures h2 em { font-family: var(--serif); font-style: italic;
+    font-weight: 500; color: var(--accent); text-transform: none; letter-spacing: -0.02em; }
+  .ventures-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+  @media (max-width: 900px) { .ventures-grid { grid-template-columns: 1fr; } }
+
+  .venture-card { background: var(--dark-bg-2); border: 1px solid var(--dark-line);
+    border-radius: 12px; padding: 2.25rem 2rem; display: flex;
+    flex-direction: column; position: relative; overflow: hidden;
+    transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1),
+                border-color 0.3s, background 0.4s;
+    text-decoration: none; color: inherit; cursor: pointer; }
+  [data-theme="dark"] .venture-card { background: #1a1a18; }
+  .venture-card:hover { transform: translateY(-6px); border-color: var(--accent); }
+  .venture-card::after { content: ''; position: absolute; bottom: 0;
+    left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    transform: scaleX(0); transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1); }
+  .venture-card:hover::after { transform: scaleX(1); }
+  .venture-head { display: flex; justify-content: space-between;
+    align-items: flex-start; margin-bottom: 2.5rem; gap: 0.5rem; flex-wrap: wrap; }
+  .venture-num { font-family: var(--sans); font-weight: 800; font-size: 1rem;
+    letter-spacing: -0.02em; color: var(--dark-ink-soft); }
+  .venture-num::before { content: '— '; color: var(--accent); }
+  .venture-meta { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+  .venture-tag { font-size: 0.6rem; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--dark-ink-soft);
+    border: 1px solid var(--dark-line); padding: 0.3rem 0.65rem;
+    border-radius: 999px; font-weight: 500; }
+  .venture-tag.status-current { color: var(--accent); border-color: var(--accent); }
+  .venture-name { font-family: var(--sans); font-size: clamp(1.5rem, 2.5vw, 2rem);
+    font-weight: 700; letter-spacing: -0.02em; margin-bottom: 0.75rem;
+    color: var(--dark-ink); text-transform: uppercase; }
+  .venture-name em { font-family: var(--serif); font-style: italic;
+    font-weight: 500; color: var(--accent); text-transform: none; letter-spacing: -0.01em; }
+  .venture-desc { font-size: 0.95rem; color: var(--dark-ink-soft);
+    line-height: 1.6; margin-bottom: 2rem; flex-grow: 1; }
+  .venture-stats { display: flex; gap: 1.5rem; margin-bottom: 2rem;
+    flex-wrap: wrap; padding-top: 1.5rem; border-top: 1px solid var(--dark-line); }
+  .venture-stat .num { font-family: var(--sans); font-weight: 700;
+    font-size: 1.25rem; letter-spacing: -0.02em; line-height: 1; color: var(--dark-ink); }
+  .venture-stat .num em { font-family: var(--serif); font-style: italic; color: var(--accent); }
+  .venture-stat .lbl { font-size: 0.62rem; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--dark-ink-soft);
+    margin-top: 0.35rem; font-weight: 500; }
+  .venture-link { font-size: 0.72rem; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--dark-ink); text-decoration: none;
+    font-weight: 600; display: inline-flex; align-items: center;
+    gap: 0.6rem; align-self: flex-start; }
+  .venture-link .arrow-circle { width: 26px; height: 26px; border-radius: 50%;
+    border: 1px solid var(--dark-line); display: inline-flex;
+    align-items: center; justify-content: center;
+    transition: transform 0.3s, background 0.3s, color 0.3s, border-color 0.3s;
+    font-size: 0.85rem; }
+  .venture-card:hover .venture-link .arrow-circle { background: var(--accent);
+    border-color: var(--accent); color: var(--dark-bg); transform: rotate(-45deg); }
+
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr;
+    gap: clamp(2rem, 5vw, 4rem); align-items: end; }
+  @media (max-width: 800px) { .contact-grid { grid-template-columns: 1fr; gap: 2rem; align-items: start; } }
+  .contact h2 { font-family: var(--sans); font-weight: 800;
+    font-size: clamp(2.5rem, 7vw, 5rem); line-height: 0.95;
+    letter-spacing: -0.035em; text-transform: uppercase; }
+  .contact h2 em { font-family: var(--serif); font-style: italic;
+    font-weight: 500; color: var(--accent); text-transform: none; }
+  .contact-list { list-style: none; display: flex; flex-direction: column; gap: 0.25rem; }
+  .contact-list a { display: flex; align-items: center; gap: 1.25rem;
+    padding: 1.25rem 0; color: var(--ink); text-decoration: none;
+    border-bottom: 1px solid var(--line);
+    transition: padding-left 0.3s, border-color 0.3s; }
+  .contact-list a:hover { padding-left: 0.75rem; border-bottom-color: var(--ink); }
+  .contact-list .label { font-size: 0.68rem; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--ink-mute); min-width: 90px; font-weight: 600; }
+  .contact-list .value { font-family: var(--serif); font-style: italic;
+    font-size: clamp(1.125rem, 2vw, 1.5rem); flex-grow: 1; font-weight: 500; color: var(--ink); }
+  .contact-list .arrow { color: var(--ink-mute);
+    transition: transform 0.3s, color 0.3s; font-size: 1.1rem; }
+  .contact-list a:hover .arrow { transform: translateX(4px) translateY(-4px); color: var(--accent); }
+
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav-logo"><span class="dot"></span> Pulkit</a>
+  <div class="nav-right">
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+      <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+    </button>
+    <button class="menu-pill" id="menuOpen" aria-label="Open menu">Menu <span class="lines"><span></span><span></span></span></button>
+  </div>
+</nav>
+
+<div class="menu-overlay" id="menuOverlay" aria-hidden="true">
+  <button class="close" id="menuClose" aria-label="Close menu">&times;</button>
+  <ul>
+    <li><a href="index.html#about" data-menu-link>About</a></li>
+    <li><a href="journey.html" data-menu-link>Journey</a></li>
+    <li><a href="index.html#ventures" data-menu-link>Ventures</a></li>
+    <li><a href="pujan-energy.html" data-menu-link>Pujan Energy</a></li>
+    <li><a href="candy-floss.html" data-menu-link>Candy Floss</a></li>
+    <li><a href="lenskart.html" data-menu-link>Lenskart</a></li>
+    <li><a href="ximivogue.html" data-menu-link>Ximivogue</a></li>
+    <li><a href="index.html#contact" data-menu-link>Contact</a></li>
+  </ul>
+</div>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <div class="hero-eyebrow reveal">Ahmedabad &middot; Gujarat &middot; India</div>
+          <h1 class="reveal delay-1">
+            <span class="greeting">Hey, I'm</span>
+            <span class="line">Pulkit</span>
+            <span class="line"><em>Viradiya</em></span>
+          </h1>
+          <p class="hero-intro reveal delay-2">
+            Entrepreneur building consumer brands and clean energy infrastructure. Took a fast-fashion retail concept from 0&rarr;1 to <strong>11 stores</strong>, and run a <strong>0.45 MW</strong> solar venture supplying industrial clients in Gujarat.
+          </p>
+          <a href="#contact" class="cta-pill reveal delay-3">
+            Get in touch
+            <span class="arrow-circle">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </span>
+          </a>
+        </div>
+        <div class="hero-portrait reveal delay-2" aria-label="Portrait placeholder">
+          <div class="portrait-placeholder">
+            <div class="silhouette" aria-hidden="true"></div>
+            <div class="label">Photo &middot; coming soon</div>
+          </div>
+          <div class="hero-badge" aria-hidden="true"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="feature-row reveal">
+    <div class="feature">
+      <div class="feature-label">0&rarr;1 Builder</div>
+      <div class="feature-desc">Built Candy Floss from concept to 11 stores during COVID disruption.</div>
+    </div>
+    <div class="feature">
+      <div class="feature-label">Retail Operator</div>
+      <div class="feature-desc">11 years in retail &mdash; franchise partnerships, private label, omni-channel.</div>
+    </div>
+    <div class="feature">
+      <div class="feature-label">Clean Energy</div>
+      <div class="feature-desc">0.45 MW solar plant under Open Access &mdash; ~99% uptime since 2019.</div>
+    </div>
+    <div class="feature">
+      <div class="feature-label">Consumer Insight</div>
+      <div class="feature-desc">Translating impulse-buying behaviour into store layouts and product mix.</div>
+    </div>
+  </div>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <div class="marquee-group">
+        <span>Consumer Brands</span><span class="diamond">&diams;</span>
+        <span><em>Retail</em></span><span class="diamond">&diams;</span>
+        <span>Private Label</span><span class="diamond">&diams;</span>
+        <span><em>D2C</em></span><span class="diamond">&diams;</span>
+        <span>Clean Energy</span><span class="diamond">&diams;</span>
+        <span><em>Operations</em></span><span class="diamond">&diams;</span>
+      </div>
+      <div class="marquee-group">
+        <span>Consumer Brands</span><span class="diamond">&diams;</span>
+        <span><em>Retail</em></span><span class="diamond">&diams;</span>
+        <span>Private Label</span><span class="diamond">&diams;</span>
+        <span><em>D2C</em></span><span class="diamond">&diams;</span>
+        <span>Clean Energy</span><span class="diamond">&diams;</span>
+        <span><em>Operations</em></span><span class="diamond">&diams;</span>
+      </div>
+    </div>
+  </div>
+
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="reveal">
+          <div class="section-label">About</div>
+          <h2>It started with<br><em>curiosity.</em></h2>
+        </div>
+        <div class="about-prose reveal delay-1">
+          <p>In 2018, I walked into a store in Delhi after seeing a long queue outside. I didn't plan to buy anything. I walked out spending &#8377;2,500 on products I didn't even know I needed.</p>
+
+          <div class="pullquote">That moment stayed with me. What just happened in there?</div>
+
+          <p>The question led me deep into consumer behaviour, impulse buying, and how retail experiences are designed. I partnered to bring a fast-fashion lifestyle format to Gujarat, opened stores in Vadodara and Surat, and learned what actually drives customers inside a retail space.</p>
+
+          <p>Then COVID hit. Imports shut down. What could have been a setback became an opening &mdash; instead of waiting for supply chains to recover, we decided to build our own brand. That's how <strong>Candy Floss</strong> was born: a 0&rarr;1 build across brand identity, product development, vendor networks, store experience, and everything in between. We scaled to <strong>11 stores</strong>, built a <strong>200+ vendor</strong> ecosystem, expanded into Phoenix and Palladium malls, and grew gross margins from 35% to 70% through private label and supply-chain control.</p>
+
+          <p>Alongside the retail work, I co-founded <strong>Pujan Energy</strong> in 2019 &mdash; a 0.45 MW solar venture supplying clean power under Open Access to ceramic and paper mill clients in Morbi. Different industry, same operating discipline: end-to-end execution, regulatory navigation, and the slow work of building something that runs at ~99% uptime year after year.</p>
+
+          <p>Through all of it, one belief has stayed constant: <strong>businesses don't grow just by selling products. They grow by understanding people.</strong> Most of my work is translating that understanding into execution &mdash; store layouts, product mix, pricing, customer experience, or in solar's case, the right plant configuration for industrial loads.</p>
+
+          <p>Lately I've been experimenting with AI to simplify workflows and create leverage in day-to-day operations. What I lack in technical skills, I make up for with curiosity and a strong willingness to learn. Outside work: pour-over coffee every morning, podcasts, and a long-running habit of breaking down brands to understand what makes them tick.</p>
+        </div>
+      </div>
+
+      <div class="stats reveal delay-2">
+        <div class="stat">
+          <div class="stat-num">11</div>
+          <div class="stat-label">Stores scaled</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">0.45<span style="font-size:0.6em;"> MW</span></div>
+          <div class="stat-label">Solar capacity</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">200<span style="font-size:0.6em;">+</span></div>
+          <div class="stat-label">Vendor network</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">11<span style="font-size:0.6em;"> yrs</span></div>
+          <div class="stat-label">In retail</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ventures" id="ventures">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-label">Ventures &amp; Chapters</div>
+        <h2>Four businesses,<br><em>one operating thesis.</em></h2>
+      </div>
+      <div class="ventures-grid">
+
+        <a href="pujan-energy.html" class="venture-card reveal delay-1">
+          <div class="venture-head">
+            <span class="venture-num">01</span>
+            <div class="venture-meta">
+              <span class="venture-tag">Clean Energy</span>
+              <span class="venture-tag status-current">Current &middot; Since 2019</span>
+            </div>
+          </div>
+          <h3 class="venture-name">Pujan <em>Energy</em></h3>
+          <p class="venture-desc">A 0.45 MW solar venture supplying clean power to industrial clients in Morbi's ceramic and paper sectors under Open Access. End-to-end execution from land to commissioning.</p>
+          <div class="venture-stats">
+            <div class="venture-stat"><div class="num">0.45<em> MW</em></div><div class="lbl">Installed</div></div>
+            <div class="venture-stat"><div class="num">~99<em>%</em></div><div class="lbl">Uptime</div></div>
+            <div class="venture-stat"><div class="num">B2B</div><div class="lbl">PSA model</div></div>
+          </div>
+          <span class="venture-link">Read the story
+            <span class="arrow-circle">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </span>
+          </span>
+        </a>
+
+        <a href="candy-floss.html" class="venture-card reveal delay-2">
+          <div class="venture-head">
+            <span class="venture-num">02</span>
+            <div class="venture-meta">
+              <span class="venture-tag">Consumer &middot; Retail</span>
+              <span class="venture-tag">2021 &ndash; 2026</span>
+            </div>
+          </div>
+          <h3 class="venture-name">Candy <em>Floss</em></h3>
+          <p class="venture-desc">Co-founded a fast-fashion lifestyle brand during COVID disruption &mdash; pivoted from imports to a Made-in-India private label ecosystem. Built from scratch, scaled to 11 stores.</p>
+          <div class="venture-stats">
+            <div class="venture-stat"><div class="num">11</div><div class="lbl">Stores</div></div>
+            <div class="venture-stat"><div class="num">200<em>+</em></div><div class="lbl">Vendors</div></div>
+            <div class="venture-stat"><div class="num">35&rarr;70<em>%</em></div><div class="lbl">GM expansion</div></div>
+          </div>
+          <span class="venture-link">Read the story
+            <span class="arrow-circle">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </span>
+          </span>
+        </a>
+
+        <a href="lenskart.html" class="venture-card reveal delay-3">
+          <div class="venture-head">
+            <span class="venture-num">03</span>
+            <div class="venture-meta">
+              <span class="venture-tag">Retail &middot; Franchise</span>
+              <span class="venture-tag">2015 &ndash; 2026</span>
+            </div>
+          </div>
+          <h3 class="venture-name"><em>Lens</em>kart</h3>
+          <p class="venture-desc">Early franchise partner &mdash; the 53rd store in Lenskart's journey from startup to a 1500+ store omni-channel network. An 11-year retail operating chapter with 5x revenue growth.</p>
+          <div class="venture-stats">
+            <div class="venture-stat"><div class="num">53<em>rd</em></div><div class="lbl">Store</div></div>
+            <div class="venture-stat"><div class="num">5<em>x</em></div><div class="lbl">Revenue growth</div></div>
+            <div class="venture-stat"><div class="num">11<em> yrs</em></div><div class="lbl">Partnership</div></div>
+          </div>
+          <span class="venture-link">Read the story
+            <span class="arrow-circle">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </span>
+          </span>
+        </a>
+
+        <a href="ximivogue.html" class="venture-card reveal delay-4">
+          <div class="venture-head">
+            <span class="venture-num">04</span>
+            <div class="venture-meta">
+              <span class="venture-tag">Fast Fashion</span>
+              <span class="venture-tag">2018 &ndash; 2021</span>
+            </div>
+          </div>
+          <h3 class="venture-name"><em>Ximi</em>vogue</h3>
+          <p class="venture-desc">Where the consumer-behaviour thesis was formed. Partnered to bring an international fast-fashion lifestyle format to Gujarat &mdash; two flagship stores, end-to-end retail setup.</p>
+          <div class="venture-stats">
+            <div class="venture-stat"><div class="num">2</div><div class="lbl">Flagships</div></div>
+            <div class="venture-stat"><div class="num">~1400<em> sqft</em></div><div class="lbl">Per store</div></div>
+            <div class="venture-stat"><div class="num">2</div><div class="lbl">Cities</div></div>
+          </div>
+          <span class="venture-link">Read the story
+            <span class="arrow-circle">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </span>
+          </span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  
+  <!-- Journey teaser -->
+  <section class="ventures" id="journey-teaser" style="background: var(--bg-deep); color: var(--ink); border-top: 1px solid var(--line);">
+    <div class="container">
+      <div class="reveal" style="display: flex; flex-direction: column; gap: 1.25rem; max-width: 900px; margin: 0 auto;">
+        <div class="section-label" style="color: var(--ink-mute); justify-content: flex-start;">The journey</div>
+        <h2 style="color: var(--ink); font-family: var(--sans); font-weight: 800; font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.0; letter-spacing: -0.035em; text-transform: uppercase; margin: 0;">From <em style="font-family: var(--serif); font-style: italic; font-weight: 500; color: var(--accent); text-transform: none; letter-spacing: -0.02em;">Surat</em> to <em style="font-family: var(--serif); font-style: italic; font-weight: 500; color: var(--accent); text-transform: none; letter-spacing: -0.02em;">Cairo</em><br>to <em style="font-family: var(--serif); font-style: italic; font-weight: 500; color: var(--accent); text-transform: none; letter-spacing: -0.02em;">Macau</em> to today.</h2>
+        <p style="font-size: 1.0625rem; color: var(--ink-soft); line-height: 1.7; max-width: 60ch; margin-top: 0.5rem;">
+          Before the ventures, there was AIESEC in Cairo, an international research presentation in Macau, a BBA at PDEU, and the four years between graduation and building Candy Floss. See the timeline.
+        </p>
+        <a href="journey.html" class="cta-pill" style="margin-top: 1.5rem; align-self: flex-start;">
+          Read the journey
+          <span class="arrow-circle">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="reveal">
+          <div class="section-label">Contact</div>
+          <h2>Let's <em>talk.</em></h2>
+        </div>
+        <ul class="contact-list reveal delay-1">
+          <li>
+            <a href="mailto:pulkitviradiya@gmail.com">
+              <span class="label">Email</span>
+              <span class="value">pulkitviradiya@gmail.com</span>
+              <span class="arrow">&#8599;</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/in/pulkitviradiya" target="_blank" rel="noopener">
+              <span class="label">LinkedIn</span>
+              <span class="value">linkedin.com/in/pulkitviradiya</span>
+              <span class="arrow">&#8599;</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span>&copy; <span id="year"></span> Pulkit Viradiya</span>
+    <span class="mark">Built with intent.</span>
+    <span>Ahmedabad, India</span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  const root = document.documentElement;
+  const toggle = document.getElementById('themeToggle');
+  const stored = localStorage.getItem('theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  if (stored) root.setAttribute('data-theme', stored);
+  else if (prefersDark) root.setAttribute('data-theme', 'dark');
+  toggle.addEventListener('click', () => {
+    const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+  });
+  const nav = document.getElementById('nav');
+  const onScroll = () => { nav.classList.toggle('scrolled', window.scrollY > 20); };
+  onScroll(); window.addEventListener('scroll', onScroll, { passive: true });
+  const menuOverlay = document.getElementById('menuOverlay');
+  document.getElementById('menuOpen').addEventListener('click', () => {
+    menuOverlay.classList.add('open'); document.body.style.overflow = 'hidden';
+  });
+  document.getElementById('menuClose').addEventListener('click', () => {
+    menuOverlay.classList.remove('open'); document.body.style.overflow = '';
+  });
+  document.querySelectorAll('[data-menu-link]').forEach(a => a.addEventListener('click', () => {
+    menuOverlay.classList.remove('open'); document.body.style.overflow = '';
+  }));
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { menuOverlay.classList.remove('open'); document.body.style.overflow = ''; } });
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('in'); io.unobserve(entry.target); } });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
