@@ -266,6 +266,52 @@
     transition: transform 0.3s; }
   .v-next a:hover .v-next-arrow { transform: rotate(-45deg); }
 
+
+  /* Per-venture colour theme */
+  :root {
+    --accent:       #b45309;
+    --accent-dark:  #7c3a06;
+    --accent-light: #fdf6ee;
+    --accent-muted: rgba(180,83,9,0.15);
+  }
+  [data-theme="dark"] {
+    --accent: color-mix(in srgb, #b45309 80%, #fff);
+  }
+  .v-hero { position: relative; }
+  .v-hero::after {
+    content: "";
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #b45309, transparent 70%);
+  }
+  .v-hero h1 em { color: #b45309; }
+  .v-tag.status-current {
+    color: #b45309;
+    border-color: #b45309;
+    background: rgba(180,83,9,0.15);
+  }
+  .v-overview {
+    background: linear-gradient(135deg, #1a1a18 0%, color-mix(in srgb, #b45309 18%, #1a1a18) 100%);
+  }
+  .v-overview h2 em { color: #b45309; }
+  .v-stat-num em { color: #b45309; }
+  .section-title em { color: #b45309; }
+  .v-highlight-num { color: #b45309; }
+  .v-highlight { transition: border-color 0.3s; }
+  .v-highlight:hover { border-color: #b45309; }
+  .v-highlight:hover h3 { color: #b45309; transition: color 0.3s; }
+  .v-outcome { background: #fdf6ee; }
+  [data-theme="dark"] .v-outcome { background: color-mix(in srgb, #b45309 12%, #161614); }
+  .v-outcome blockquote em { color: #b45309; }
+  .v-outcome-label { color: #b45309; }
+  .v-next-arrow { background: #b45309; }
+  .v-next-title em { color: #b45309; }
+  .v-back:hover { color: #b45309; }
+  .v-overview .section-label::before { background: #b45309; }
+  .v-overview .section-label { color: color-mix(in srgb, #b45309 80%, #fff); }
+  /* end venture colour */
+
 </style>
 </head>
 <body>

@@ -1,5 +1,5 @@
 <!-- Last updated: May 23, 2026 -->
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8" />
@@ -340,6 +340,23 @@
   .contact-list .arrow { color: var(--ink-mute);
     transition: transform 0.3s, color 0.3s; font-size: 1.1rem; }
   .contact-list a:hover .arrow { transform: translateX(4px) translateY(-4px); color: var(--accent); }
+
+
+  /* Per-venture card accent colours */
+  a[href="pujan-energy.html"].venture-card:hover { border-color: #2d6a4f; }
+  a[href="pujan-energy.html"].venture-card::after { background: linear-gradient(90deg, transparent, #2d6a4f, transparent); }
+  a[href="pujan-energy.html"].venture-card:hover .venture-link .arrow-circle { background: #2d6a4f; border-color: #2d6a4f; }
+  a[href="pujan-energy.html"] .venture-tag.status-current { color: #2d6a4f; border-color: #2d6a4f; }
+  a[href="candy-floss.html"].venture-card:hover { border-color: #c45c8a; }
+  a[href="candy-floss.html"].venture-card::after { background: linear-gradient(90deg, transparent, #c45c8a, transparent); }
+  a[href="candy-floss.html"].venture-card:hover .venture-link .arrow-circle { background: #c45c8a; border-color: #c45c8a; }
+  a[href="lenskart.html"].venture-card:hover { border-color: #2563a8; }
+  a[href="lenskart.html"].venture-card::after { background: linear-gradient(90deg, transparent, #2563a8, transparent); }
+  a[href="lenskart.html"].venture-card:hover .venture-link .arrow-circle { background: #2563a8; border-color: #2563a8; }
+  a[href="ximivogue.html"].venture-card:hover { border-color: #b45309; }
+  a[href="ximivogue.html"].venture-card::after { background: linear-gradient(90deg, transparent, #b45309, transparent); }
+  a[href="ximivogue.html"].venture-card:hover .venture-link .arrow-circle { background: #b45309; border-color: #b45309; }
+  /* end card colours */
 
 </style>
 </head>

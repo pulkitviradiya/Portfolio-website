@@ -266,6 +266,52 @@
     transition: transform 0.3s; }
   .v-next a:hover .v-next-arrow { transform: rotate(-45deg); }
 
+
+  /* Per-venture colour theme */
+  :root {
+    --accent:       #2d6a4f;
+    --accent-dark:  #1a4a35;
+    --accent-light: #e8f5f0;
+    --accent-muted: rgba(45,106,79,0.15);
+  }
+  [data-theme="dark"] {
+    --accent: color-mix(in srgb, #2d6a4f 80%, #fff);
+  }
+  .v-hero { position: relative; }
+  .v-hero::after {
+    content: "";
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #2d6a4f, transparent 70%);
+  }
+  .v-hero h1 em { color: #2d6a4f; }
+  .v-tag.status-current {
+    color: #2d6a4f;
+    border-color: #2d6a4f;
+    background: rgba(45,106,79,0.15);
+  }
+  .v-overview {
+    background: linear-gradient(135deg, #1a1a18 0%, color-mix(in srgb, #2d6a4f 18%, #1a1a18) 100%);
+  }
+  .v-overview h2 em { color: #2d6a4f; }
+  .v-stat-num em { color: #2d6a4f; }
+  .section-title em { color: #2d6a4f; }
+  .v-highlight-num { color: #2d6a4f; }
+  .v-highlight { transition: border-color 0.3s; }
+  .v-highlight:hover { border-color: #2d6a4f; }
+  .v-highlight:hover h3 { color: #2d6a4f; transition: color 0.3s; }
+  .v-outcome { background: #e8f5f0; }
+  [data-theme="dark"] .v-outcome { background: color-mix(in srgb, #2d6a4f 12%, #161614); }
+  .v-outcome blockquote em { color: #2d6a4f; }
+  .v-outcome-label { color: #2d6a4f; }
+  .v-next-arrow { background: #2d6a4f; }
+  .v-next-title em { color: #2d6a4f; }
+  .v-back:hover { color: #2d6a4f; }
+  .v-overview .section-label::before { background: #2d6a4f; }
+  .v-overview .section-label { color: color-mix(in srgb, #2d6a4f 80%, #fff); }
+  /* end venture colour */
+
 </style>
 </head>
 <body>
