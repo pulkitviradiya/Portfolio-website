@@ -313,6 +313,63 @@
     transition: transform 0.3s; }
   .j-end a:hover .j-end-arrow { transform: rotate(-45deg); }
 
+
+  /* VARIANT B — Bold Epochs + Per-category colour pop */
+  /* Each .t-item carries --item-accent inline; falls back to site --accent */
+  @media (min-width: 900px) {
+    .t-item { grid-template-columns: 170px 1fr; }
+  }
+  .t-year { font-size: 1.65rem; letter-spacing: -0.03em; }
+  .t-item.is-milestone .t-year,
+  .t-item.is-current  .t-year {
+    color: var(--item-accent, var(--accent)); font-size: 2rem; }
+  .t-year .duration { color: var(--ink-soft); font-size: 0.78rem; }
+  .j-fact-val .sub  { color: var(--ink-soft); }
+
+  /* Filled pill category tags — per-entry colour */
+  .t-cat {
+    background: var(--item-accent, var(--accent)); color: #fff;
+    padding: 0.22rem 0.7rem; border-radius: 999px;
+    font-size: 0.58rem; letter-spacing: 0.2em;
+    font-weight: 700; margin-bottom: 0.75rem;
+    display: inline-block;
+  }
+
+  /* Milestone/current content: left stripe in entry colour */
+  .t-item.is-milestone .t-content,
+  .t-item.is-current  .t-content {
+    border-left: 3px solid var(--item-accent, var(--accent));
+    padding-left: 1.25rem;
+  }
+  /* Non-milestone entries: thinner muted stripe */
+  .t-item:not(.is-milestone):not(.is-current) .t-content {
+    border-left: 2px solid color-mix(in srgb, var(--item-accent, var(--accent)) 35%, transparent);
+    padding-left: 1.25rem;
+  }
+
+  /* Title em italics take entry colour */
+  .t-title em { color: var(--item-accent, var(--accent)); }
+
+  /* Timeline dots: entry colour */
+  .t-item::before {
+    border-color: var(--item-accent, var(--accent)); }
+  .t-item.is-milestone::before {
+    background: var(--item-accent, var(--accent));
+    border-color: var(--item-accent, var(--accent)); }
+  .t-item.is-current::before {
+    background: var(--item-accent, var(--accent));
+    border-color: var(--item-accent, var(--accent));
+    box-shadow: 0 0 0 5px color-mix(in srgb, var(--item-accent, var(--accent)) 18%, transparent); }
+
+  /* Timeline thread: multi-stop gradient to hint category colours */
+  .timeline::before {
+    background: linear-gradient(to bottom,
+      transparent 0%,
+      var(--line) 5%,
+      var(--line) 95%,
+      transparent 100%);
+  }
+
 </style>
 </head>
 <body>
@@ -381,7 +438,7 @@
         <h2>2007 &mdash; <em>today.</em></h2>
       </div>
       <div class="timeline">
-      <div class="t-item is-current reveal">
+      <div class="t-item is-current reveal" style="--item-accent:#6b5443">
         <div class="t-year">2026<span class="duration">Today</span></div>
         <div class="t-content">
           <span class="t-cat">Today</span>
@@ -391,17 +448,7 @@
           <p class="t-desc">Actively experimenting with AI to simplify workflows and create leverage in daily operations.</p>
         </div>
       </div>
-      <div class="t-item is-milestone reveal">
-        <div class="t-year">2019<span class="duration">Apr 2019 &mdash; Present</span></div>
-        <div class="t-content">
-          <span class="t-cat">Clean Energy</span>
-          <h3 class="t-title">Co-founded <em>Pujan Energy</em></h3>
-          <div class="t-sub">Jam Jodhpur, Gujarat &middot; 0.45 MW Solar</div>
-          <p class="t-desc">Co-founded and operate a solar energy venture with 0.45 MW installed capacity, supplying clean power to industrial consumers under Open Access.</p>
-          <p class="t-desc">Led end-to-end execution from land identification and feasibility through commissioning and sustained operations &mdash; navigating MSME/Udyog Aadhaar, GETCO, SLDC, and PGVCL approvals.</p>
-        </div>
-      </div>
-      <div class="t-item is-milestone reveal">
+      <div class="t-item is-milestone reveal" style="--item-accent:#c45c8a">
         <div class="t-year">2021<span class="duration">Jul 2021 &mdash; Mar 2026</span></div>
         <div class="t-content">
           <span class="t-cat">Consumer Brand</span>
@@ -411,7 +458,17 @@
           <p class="t-desc">Scaled to <strong>11 stores</strong>, a <strong>200+ vendor network</strong>, and gross margin expansion from ~35% to ~70% through private label and supply-chain control.</p>
         </div>
       </div>
-      <div class="t-item is-milestone reveal">
+      <div class="t-item is-milestone reveal" style="--item-accent:#2d6a4f">
+        <div class="t-year">2019<span class="duration">Apr 2019 &mdash; Present</span></div>
+        <div class="t-content">
+          <span class="t-cat">Clean Energy</span>
+          <h3 class="t-title">Co-founded <em>Pujan Energy</em></h3>
+          <div class="t-sub">Jam Jodhpur, Gujarat &middot; 0.45 MW Solar</div>
+          <p class="t-desc">Co-founded and operate a solar energy venture with 0.45 MW installed capacity, supplying clean power to industrial consumers under Open Access.</p>
+          <p class="t-desc">Led end-to-end execution from land identification and feasibility through commissioning and sustained operations &mdash; navigating MSME/Udyog Aadhaar, GETCO, SLDC, and PGVCL approvals.</p>
+        </div>
+      </div>
+      <div class="t-item is-milestone reveal" style="--item-accent:#b45309">
         <div class="t-year">2018<span class="duration">Aug 2018 &mdash; Jun 2021</span></div>
         <div class="t-content">
           <span class="t-cat">Fast Fashion</span>
@@ -421,7 +478,7 @@
           <p class="t-desc">Where the consumer-behaviour thesis was formed &mdash; the foundation for everything that came after.</p>
         </div>
       </div>
-      <div class="t-item reveal">
+      <div class="t-item reveal" style="--item-accent:#d97706">
         <div class="t-year">2018<span class="duration">Delhi</span></div>
         <div class="t-content">
           <span class="t-cat">The moment</span>
@@ -430,7 +487,7 @@
           <p class="t-desc">Walked into a Delhi store after seeing a long queue outside. Walked out spending &#8377;2,500 on products I didn&rsquo;t know I needed. That single question &mdash; <em>what just happened in there?</em> &mdash; sent me deep into consumer behaviour, impulse buying, and how retail experiences are designed.</p>
         </div>
       </div>
-      <div class="t-item is-milestone reveal">
+      <div class="t-item is-milestone reveal" style="--item-accent:#2563a8">
         <div class="t-year">2015<span class="duration">Feb 2015 &mdash; Mar 2026</span></div>
         <div class="t-content">
           <span class="t-cat">Retail Franchise</span>
@@ -440,7 +497,7 @@
           <p class="t-desc">Spent <strong>11 years</strong> inside a scaling startup &mdash; learning how fast-moving consumer brands experiment, optimise, and evolve across pricing, product, and customer experience. Launched a second franchise unit in Gandhidham in 2020.</p>
         </div>
       </div>
-      <div class="t-item reveal">
+      <div class="t-item reveal" style="--item-accent:#7c3aed">
         <div class="t-year">2014<span class="duration">Jan 2014</span></div>
         <div class="t-content">
           <span class="t-cat">Research</span>
@@ -450,16 +507,7 @@
           <p class="t-desc">Engaged with global researchers and academicians on economic development and policy challenges &mdash; an early experience that built foundations in analytical thinking, public speaking, and structured problem-solving.</p>
         </div>
       </div>
-      <div class="t-item is-milestone reveal">
-        <div class="t-year">2010<span class="duration">2010 &mdash; 2014</span></div>
-        <div class="t-content">
-          <span class="t-cat">Education</span>
-          <h3 class="t-title">BBA at <em>PDEU</em></h3>
-          <div class="t-sub">Pandit Deendayal Energy University &middot; Business Administration, Economics</div>
-          <p class="t-desc">Bachelor of Business Administration &mdash; Business Administration with Economics focus. The four years that built the analytical foundation for everything that followed.</p>
-        </div>
-      </div>
-      <div class="t-item reveal">
+      <div class="t-item reveal" style="--item-accent:#7c3aed">
         <div class="t-year">2013<span class="duration">Dec 2013</span></div>
         <div class="t-content">
           <span class="t-cat">Research</span>
@@ -468,7 +516,7 @@
           <p class="t-desc">Presented research papers at national and international conferences on sustainability, governance, and economic development. Co-presented at <strong>Rajiv Gandhi National University of Law (Chandigarh)</strong> on sustainable rural development, and at New Delhi on the role of public vs. private sector in sustainable development.</p>
         </div>
       </div>
-      <div class="t-item is-milestone reveal">
+      <div class="t-item is-milestone reveal" style="--item-accent:#0891b2">
         <div class="t-year">2013<span class="duration">May &mdash; Jun 2013</span></div>
         <div class="t-content">
           <span class="t-cat">Internship</span>
@@ -479,7 +527,16 @@
           <p class="t-desc">First real exposure to operating in a completely unstructured environment &mdash; and to emerging-market dynamics from the ground up.</p>
         </div>
       </div>
-      <div class="t-item reveal">
+      <div class="t-item is-milestone reveal" style="--item-accent:#4f46e5">
+        <div class="t-year">2010<span class="duration">2010 &mdash; 2014</span></div>
+        <div class="t-content">
+          <span class="t-cat">Education</span>
+          <h3 class="t-title">BBA at <em>PDEU</em></h3>
+          <div class="t-sub">Pandit Deendayal Energy University &middot; Business Administration, Economics</div>
+          <p class="t-desc">Bachelor of Business Administration &mdash; Business Administration with Economics focus. The four years that built the analytical foundation for everything that followed.</p>
+        </div>
+      </div>
+      <div class="t-item reveal" style="--item-accent:#4f46e5">
         <div class="t-year">2007<span class="duration">2007 &mdash; 2010</span></div>
         <div class="t-content">
           <span class="t-cat">Education</span>
