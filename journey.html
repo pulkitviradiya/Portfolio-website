@@ -152,14 +152,20 @@
     position: absolute; inset: 0;
     width: 100%; height: 100%;
   }
+  /* Each footprint loops on a 5 s cycle.
+     Negative delays stagger them so they walk in sequence
+     and the loop restarts seamlessly. */
   .j-fp {
     fill: var(--accent);
     opacity: 0;
-    animation: fp-in 0.5s ease-out forwards;
+    animation: fp-loop 5s ease-in-out infinite;
   }
-  @keyframes fp-in {
-    from { opacity: 0; }
-    to   { opacity: 0.22; }
+  @keyframes fp-loop {
+    0%   { opacity: 0; }
+    8%   { opacity: 0.25; }
+    65%  { opacity: 0.25; }
+    80%  { opacity: 0; }
+    100% { opacity: 0; }
   }
 
   /* Portrait circle */
@@ -462,39 +468,39 @@
     <!-- Decorative layer: animated footprints + portrait -->
     <div class="j-deco" aria-hidden="true">
 
-      <!-- Footprints: 10 steps climbing 45° from centre-bottom to top-right -->
-      <svg class="j-fps" viewBox="0 0 1200 620" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+      <!-- Footprints: 8 steps in the empty right zone only, clear of all text -->
+      <!-- preserveAspectRatio="none" so x/y positions map linearly to screen % -->
+      <svg class="j-fps" viewBox="0 0 1200 620" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
         <defs>
-          <!-- Right foot (big toe on left of long axis) -->
+          <!-- Right foot -->
           <g id="jfp-r">
             <ellipse cx="0" cy="1.5" rx="5.5" ry="9.5"/>
-            <ellipse cx="-5"   cy="-9"  rx="2.2" ry="2"/>
+            <ellipse cx="-5"   cy="-9"    rx="2.2" ry="2"/>
             <ellipse cx="-2"   cy="-11.5" rx="2.5" ry="2.3"/>
-            <ellipse cx="1.5"  cy="-12" rx="2.5" ry="2.3"/>
+            <ellipse cx="1.5"  cy="-12"   rx="2.5" ry="2.3"/>
             <ellipse cx="4.5"  cy="-10.5" rx="2.2" ry="2"/>
-            <ellipse cx="6.5"  cy="-8.5" rx="1.8" ry="1.8"/>
+            <ellipse cx="6.5"  cy="-8.5"  rx="1.8" ry="1.8"/>
           </g>
-          <!-- Left foot (big toe on right of long axis) -->
+          <!-- Left foot (mirrored toes) -->
           <g id="jfp-l">
             <ellipse cx="0" cy="1.5" rx="5.5" ry="9.5"/>
-            <ellipse cx="5"    cy="-9"  rx="2.2" ry="2"/>
+            <ellipse cx="5"    cy="-9"    rx="2.2" ry="2"/>
             <ellipse cx="2"    cy="-11.5" rx="2.5" ry="2.3"/>
-            <ellipse cx="-1.5" cy="-12" rx="2.5" ry="2.3"/>
+            <ellipse cx="-1.5" cy="-12"   rx="2.5" ry="2.3"/>
             <ellipse cx="-4.5" cy="-10.5" rx="2.2" ry="2"/>
-            <ellipse cx="-6.5" cy="-8.5" rx="1.8" ry="1.8"/>
+            <ellipse cx="-6.5" cy="-8.5"  rx="1.8" ry="1.8"/>
           </g>
         </defs>
-        <!-- Steps rise diagonally 45° — centre-bottom (600,570) → top-right (1054,106) -->
-        <use href="#jfp-r" class="j-fp" transform="translate(605,575) rotate(45)" style="animation-delay:0.3s"/>
-        <use href="#jfp-l" class="j-fp" transform="translate(646,514) rotate(45)" style="animation-delay:0.6s"/>
-        <use href="#jfp-r" class="j-fp" transform="translate(707,473) rotate(45)" style="animation-delay:0.9s"/>
-        <use href="#jfp-l" class="j-fp" transform="translate(748,412) rotate(45)" style="animation-delay:1.2s"/>
-        <use href="#jfp-r" class="j-fp" transform="translate(809,371) rotate(45)" style="animation-delay:1.5s"/>
-        <use href="#jfp-l" class="j-fp" transform="translate(850,310) rotate(45)" style="animation-delay:1.8s"/>
-        <use href="#jfp-r" class="j-fp" transform="translate(911,269) rotate(45)" style="animation-delay:2.1s"/>
-        <use href="#jfp-l" class="j-fp" transform="translate(952,208) rotate(45)" style="animation-delay:2.4s"/>
-        <use href="#jfp-r" class="j-fp" transform="translate(1013,167) rotate(45)" style="animation-delay:2.7s"/>
-        <use href="#jfp-l" class="j-fp" transform="translate(1054,106) rotate(45)" style="animation-delay:3.0s"/>
+        <!-- Path: (786,559) → (1064,110) all in the right 35% of the viewBox -->
+        <!-- Negative delays create a seamless infinite walking loop -->
+        <use href="#jfp-r" class="j-fp" transform="translate(786,559) rotate(33)" style="animation-delay:-5.0s"/>
+        <use href="#jfp-l" class="j-fp" transform="translate(815,488) rotate(33)" style="animation-delay:-4.5s"/>
+        <use href="#jfp-r" class="j-fp" transform="translate(869,433) rotate(33)" style="animation-delay:-4.0s"/>
+        <use href="#jfp-l" class="j-fp" transform="translate(898,362) rotate(33)" style="animation-delay:-3.5s"/>
+        <use href="#jfp-r" class="j-fp" transform="translate(951,307) rotate(33)" style="animation-delay:-3.0s"/>
+        <use href="#jfp-l" class="j-fp" transform="translate(981,236) rotate(33)" style="animation-delay:-2.5s"/>
+        <use href="#jfp-r" class="j-fp" transform="translate(1034,181) rotate(33)" style="animation-delay:-2.0s"/>
+        <use href="#jfp-l" class="j-fp" transform="translate(1064,110) rotate(33)" style="animation-delay:-1.5s"/>
       </svg>
 
       <!-- Round portrait — face facing right -->
