@@ -144,6 +144,11 @@
   }
 
 
+  /* Full-bleed cover image */
+  .v-cover { width: 100%; height: clamp(260px, 42vw, 560px); overflow: hidden; }
+  .v-cover img { width: 100%; height: 100%; object-fit: cover; object-position: center 40%;
+    display: block; }
+
   /* Venture detail page */
   .v-hero { padding-top: 7rem; padding-bottom: 3rem; position: relative; }
   .v-back { display: inline-flex; align-items: center; gap: 0.5rem;
@@ -360,6 +365,10 @@
       <p class="v-tagline reveal delay-2">Early franchise partner, the <em>53rd store</em> in Lenskart&rsquo;s journey from startup to a 1500+ store omni-channel network in India.</p>
     </div>
   </section>
+
+  <div class="v-cover">
+    <img src="lenskart-store.jpg" alt="Lenskart franchise store — Surat" loading="lazy">
+  </div>
 
   <section class="v-overview">
     <div class="container">
