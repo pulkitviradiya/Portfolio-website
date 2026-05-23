@@ -142,7 +142,49 @@
 
 
   /* Journey hero */
-  .j-hero { padding-top: 7rem; padding-bottom: 3rem; }
+  .j-hero { padding-top: 7rem; padding-bottom: 3rem; position: relative; overflow: hidden; }
+
+  /* Hero decorative layer — footprints + portrait */
+  .j-deco { position: absolute; inset: 0; pointer-events: none; }
+
+  /* Footprints SVG */
+  .j-fps {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    opacity: 0.13;
+  }
+  .j-fp {
+    fill: var(--accent);
+    opacity: 0;
+    animation: fp-in 0.45s ease-out forwards;
+  }
+  @keyframes fp-in {
+    from { opacity: 0; transform-box: fill-box; transform-origin: center; transform: scale(0.5); }
+    to   { opacity: 1; transform-box: fill-box; transform-origin: center; transform: scale(1); }
+  }
+
+  /* Portrait circle */
+  .j-portrait {
+    position: absolute;
+    top: 5.75rem;
+    right: calc(var(--pad) + 0.5rem);
+    width: clamp(96px, 10.5vw, 148px);
+    height: clamp(96px, 10.5vw, 148px);
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    background: var(--bg-deep);
+    box-shadow: 0 2px 24px color-mix(in srgb, var(--ink) 6%, transparent);
+  }
+  .j-portrait img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+  }
+
+  @media (max-width: 768px) { .j-deco { display: none; } }
+
   .j-back { display: inline-flex; align-items: center; gap: 0.5rem;
     font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
     color: var(--ink-mute); text-decoration: none; font-weight: 600;
@@ -417,6 +459,52 @@
 <main id="top">
 
   <section class="j-hero">
+
+    <!-- Decorative layer: animated footprints + portrait -->
+    <div class="j-deco" aria-hidden="true">
+
+      <!-- Footprints: 10 steps climbing 45° from centre-bottom to top-right -->
+      <svg class="j-fps" viewBox="0 0 1200 620" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <!-- Right foot (big toe on left of long axis) -->
+          <g id="jfp-r">
+            <ellipse cx="0" cy="1.5" rx="5.5" ry="9.5"/>
+            <ellipse cx="-5"   cy="-9"  rx="2.2" ry="2"/>
+            <ellipse cx="-2"   cy="-11.5" rx="2.5" ry="2.3"/>
+            <ellipse cx="1.5"  cy="-12" rx="2.5" ry="2.3"/>
+            <ellipse cx="4.5"  cy="-10.5" rx="2.2" ry="2"/>
+            <ellipse cx="6.5"  cy="-8.5" rx="1.8" ry="1.8"/>
+          </g>
+          <!-- Left foot (big toe on right of long axis) -->
+          <g id="jfp-l">
+            <ellipse cx="0" cy="1.5" rx="5.5" ry="9.5"/>
+            <ellipse cx="5"    cy="-9"  rx="2.2" ry="2"/>
+            <ellipse cx="2"    cy="-11.5" rx="2.5" ry="2.3"/>
+            <ellipse cx="-1.5" cy="-12" rx="2.5" ry="2.3"/>
+            <ellipse cx="-4.5" cy="-10.5" rx="2.2" ry="2"/>
+            <ellipse cx="-6.5" cy="-8.5" rx="1.8" ry="1.8"/>
+          </g>
+        </defs>
+        <!-- Steps rise diagonally 45° — centre-bottom (600,570) → top-right (1054,106) -->
+        <use href="#jfp-r" class="j-fp" transform="translate(605,575) rotate(45)" style="animation-delay:0.3s"/>
+        <use href="#jfp-l" class="j-fp" transform="translate(646,514) rotate(45)" style="animation-delay:0.6s"/>
+        <use href="#jfp-r" class="j-fp" transform="translate(707,473) rotate(45)" style="animation-delay:0.9s"/>
+        <use href="#jfp-l" class="j-fp" transform="translate(748,412) rotate(45)" style="animation-delay:1.2s"/>
+        <use href="#jfp-r" class="j-fp" transform="translate(809,371) rotate(45)" style="animation-delay:1.5s"/>
+        <use href="#jfp-l" class="j-fp" transform="translate(850,310) rotate(45)" style="animation-delay:1.8s"/>
+        <use href="#jfp-r" class="j-fp" transform="translate(911,269) rotate(45)" style="animation-delay:2.1s"/>
+        <use href="#jfp-l" class="j-fp" transform="translate(952,208) rotate(45)" style="animation-delay:2.4s"/>
+        <use href="#jfp-r" class="j-fp" transform="translate(1013,167) rotate(45)" style="animation-delay:2.7s"/>
+        <use href="#jfp-l" class="j-fp" transform="translate(1054,106) rotate(45)" style="animation-delay:3.0s"/>
+      </svg>
+
+      <!-- Round portrait — face facing right -->
+      <div class="j-portrait">
+        <img src="pulkit-right.jpg" alt="Pulkit Viradiya" onerror="this.style.display='none'">
+      </div>
+
+    </div><!-- /.j-deco -->
+
     <div class="container">
       <a href="index.html" class="j-back reveal">&larr; Back to portfolio</a>
 
