@@ -141,6 +141,11 @@
   }
 
 
+  /* Full-bleed cover image */
+  .v-cover { width: 100%; height: clamp(260px, 42vw, 560px); overflow: hidden; }
+  .v-cover img { width: 100%; height: 100%; object-fit: cover; object-position: center 40%;
+    display: block; }
+
   /* Venture detail page */
   .v-hero { padding-top: 7rem; padding-bottom: 3rem; position: relative; }
   .v-back { display: inline-flex; align-items: center; gap: 0.5rem;
@@ -357,6 +362,10 @@
       <p class="v-tagline reveal delay-2">A 0.45 MW solar venture supplying clean power to industrial clients in Morbi&rsquo;s ceramic and paper sectors, built from the ground up since 2019.</p>
     </div>
   </section>
+
+  <div class="v-cover">
+    <img src="pujan-solar.jpg" alt="Pujan Energy — 0.45 MW solar installation, Gujarat" loading="lazy">
+  </div>
 
   <section class="v-overview">
     <div class="container">
