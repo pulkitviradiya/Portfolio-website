@@ -1,0 +1,39 @@
+# Environment & secrets
+.env
+.env.*
+*.key
+*.pem
+*.p12
+*.pfx
+*.cer
+*.crt
+*.secret
+secrets.json
+credentials.json
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
+
+# Node (if ever added)
+node_modules/
+npm-debug.log*
+yarn-error.log
+
+# Build output (if ever added)
+dist/
+build/
+.cache/
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
