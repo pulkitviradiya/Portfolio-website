@@ -2,6 +2,31 @@
 
 This file provides guidance to Codex (Codex.ai/code) when working with code in this repository.
 
+---
+
+## Session & memory management
+
+At the start of every session, read `MEMORY.md` before responding. Use what you find to inform your work. Don't announce what you found, just be informed by it.
+
+When Pulkit says "remember this," write the information to `MEMORY.md` immediately and confirm you've done it.
+
+### Where things go
+
+Apply two tests when deciding where to save something:
+
+- **Test 1 — behaviour?** Look for words like "always," "never," "before doing X, do Y." If yes, add it to this file (`CLAUDE.md`) under the appropriate section.
+- **Test 2 — fact about the world?** Contact details, project status, decisions, things Pulkit has said to remember. If yes, add it to `MEMORY.md`. When unsure, suggest which file you think it belongs in and ask for confirmation.
+
+### Memory hygiene rules
+
+1. Keep each `MEMORY.md` entry to two sentences max.
+2. Keep root `MEMORY.md` under 150 lines; if it exceeds 150, compress verbose entries first, then archive the overflow to `ARCHIVE.md`.
+3. Current-state content (active projects, contact info, working conventions) stays in `MEMORY.md` regardless of age.
+4. When a project completes or an entry becomes outdated, move it from `MEMORY.md` to `ARCHIVE.md` automatically.
+5. `ARCHIVE.md` is reference-only: never read at session start, only pulled up when asked about something historical.
+
+---
+
 ## Overview
 
 Static personal portfolio website for Pulkit Viradiya — no build step, no framework, no dependencies. Open any `.html` file directly in a browser to preview it.
