@@ -4,7 +4,7 @@ Reference-only. Do not read at session start. Pull this up only when asked about
 
 ---
 
-## [2025-06-25] June 2025 session — change log
+## [2026-06-25] June 2025 session — change log
 
 | Change | Files touched |
 |---|---|
@@ -24,7 +24,7 @@ Reference-only. Do not read at session start. Pull this up only when asked about
 
 ---
 
-## [2025-06-25] Image processing recipes (full code)
+## [2026-06-25] Image processing recipes (full code)
 
 ### Cover image — 1920×928 px, warm-graded
 ```python
@@ -72,7 +72,7 @@ ico_img.save("favicon.ico", format="ICO", sizes=[(16,16),(32,32),(48,48)])
 
 ---
 
-## [2025-06-25] Animation notes — footprints (journey.html)
+## [2026-06-25] Animation notes — footprints (journey.html)
 
 The SVG footprint trail uses opacity-only animation (`fp-loop` keyframe). Using `transform` or `transform-origin` inside `@keyframes` causes browsers to silently ignore the entire animation.
 
