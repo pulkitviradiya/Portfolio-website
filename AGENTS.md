@@ -17,6 +17,10 @@ Apply two tests when deciding where to save something:
 - **Test 1 — behaviour?** Look for words like "always," "never," "before doing X, do Y." If yes, add it to this file (`CLAUDE.md`) under the appropriate section.
 - **Test 2 — fact about the world?** Contact details, project status, decisions, things Pulkit has said to remember. If yes, add it to `MEMORY.md`. When unsure, suggest which file you think it belongs in and ask for confirmation.
 
+### Git workflow
+
+Codex also pushes to `origin/main`. Always run `git pull origin main` before making any changes in a new session to avoid push rejections.
+
 ### Memory hygiene rules
 
 1. Keep each `MEMORY.md` entry to two sentences max.
