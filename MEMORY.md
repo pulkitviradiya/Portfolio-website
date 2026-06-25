@@ -16,6 +16,13 @@
 - Mobile review: journey hero footprints + portrait circle are hidden at `max-width: 768px` — confirm this is intentional.
 - Add a new venture page when needed by copying an existing case study and following CLAUDE.md mandatory requirements.
 
+## Session log
+
+### 2026-06-25
+Full docs structure created: `docs/architecture.md`, `docs/conventions.md`, `docs/tasks.md`. `CLAUDE.md` updated with reference map and standing instructions; memory management rules and git workflow rule added in same session.
+
+---
+
 ## Image specs (quick reference)
 - Cover images: 1920×928 px JPEG, PIL Color 0.82 / Brightness 0.93 / warm overlay `#af8058` at alpha 0.10.
 - Portrait circle: 500×500 px JPEG, square-cropped from top-center of source image.

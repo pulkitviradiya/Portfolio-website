@@ -223,3 +223,23 @@ The contact email in `index.html` is HTML-entity encoded to deter simple bot scr
 | `favicon.ico` | 3 KB | Multi-size ICO (16/32/48px), memoji |
 | `favicon-32x32.png` | 2 KB | 32×32 PNG favicon |
 | `apple-touch-icon.png` | 29 KB | 180×180 PNG, memoji |
+
+---
+
+## Reference map
+
+- Architecture, folder structure, tech stack → `@docs/architecture.md`
+- Naming rules, class prefixes, animation patterns, shared block conventions → `@docs/conventions.md`
+- Open tasks, known issues, current sprint → `@docs/tasks.md`
+- Session history, current-state facts, image specs → `@MEMORY.md`
+- Completed sessions, full code recipes, historical notes → `@ARCHIVE.md`
+
+There is no API layer — `docs/api-reference.md` is intentionally omitted.
+
+---
+
+## Standing instructions
+
+- Before making any structural change (new page, new section pattern, new CSS class prefix), read `docs/conventions.md` first.
+- Before adding a new file or image, check `docs/architecture.md` to confirm placement and naming.
+- Always read `MEMORY.md` at the start of every session before responding to anything.
