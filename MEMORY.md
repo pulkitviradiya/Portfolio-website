@@ -18,8 +18,11 @@
 
 ## Session log
 
-### 2026-06-25
+### 2026-06-25 (session 1)
 Full docs structure created: `docs/architecture.md`, `docs/conventions.md`, `docs/tasks.md`. `CLAUDE.md` updated with reference map and standing instructions; memory management rules and git workflow rule added in same session.
+
+### 2026-06-25 (session 2)
+Documentation audit run — all docs files verified current and complete, no new TODOs in any HTML file, `pulkit.jpg` still 6.1 MB (resize task still open). No code changes made.
 
 ---
 

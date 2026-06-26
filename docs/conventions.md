@@ -73,6 +73,10 @@ To make a link visually invisible (clickable but shows no underline or colour ch
 - All `<p>` text: `text-align: justify`
 - No em-dashes (`—` / `&mdash;`) anywhere — use `, ` (comma-space) instead
 
+## Mobile behavior
+
+- Journey hero decorations (`.j-deco` — animated footprints and portrait circle) are hidden at `max-width: 768px` via `display: none`. This is intentional — no mobile fallback is needed.
+
 ## Image conventions
 
 - Cover images for venture pages: 1920×928 px JPEG, warm-graded (see MEMORY.md for PIL params)
