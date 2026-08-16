@@ -9,8 +9,8 @@
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-<meta name="description" content="An 11-year franchise partnership with Lenskart, early partner (53rd store), 5x revenue growth, and a hands-on view of how a startup scaled to 1500+ stores." />
-<title>Lenskart Franchise Partnership, Pulkit Viradiya</title>
+<meta name="description" content="P.S. Coffee — a grab-and-go specialty coffee brand being built in Ahmedabad. Compact Pods in corporate campuses, co-working spaces, gyms, and high-footfall corners. Pre-launch, 2026." />
+<title>P.S. Coffee, Pulkit Viradiya</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -95,17 +95,6 @@
     width: 44px; height: 44px; border-radius: 50%; cursor: pointer;
     font-size: 1.25rem; }
 
-  /* Marquee */
-  .marquee { background: var(--ink); color: var(--bg); padding: 1.25rem 0;
-    overflow: hidden; white-space: nowrap; }
-  .marquee-track { display: inline-flex; animation: marquee 35s linear infinite; will-change: transform; }
-  .marquee-group { display: inline-flex; align-items: center; gap: 2.5rem; padding-right: 2.5rem; }
-  .marquee span { font-family: var(--serif); font-style: italic;
-    font-size: clamp(1.5rem, 3vw, 2.25rem); font-weight: 500; letter-spacing: -0.01em; }
-  .marquee .diamond { color: var(--accent); font-family: var(--sans);
-    font-style: normal; font-size: 1rem; }
-  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-
   /* Section heading */
   .section-label { font-size: 0.72rem; letter-spacing: 0.22em;
     text-transform: uppercase; color: var(--ink-mute); margin-bottom: 1.25rem;
@@ -144,14 +133,7 @@
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
     .reveal { opacity: 1; transform: none; }
-    .marquee-track { animation: none; }
   }
-
-
-  /* Full-bleed cover image */
-  .v-cover { width: 100%; height: clamp(260px, 42vw, 560px); overflow: hidden; }
-  .v-cover img { width: 100%; height: 100%; object-fit: cover; object-position: center 40%;
-    display: block; }
 
   /* Venture detail page */
   .v-hero { padding-top: 7rem; padding-bottom: 3rem; position: relative; }
@@ -165,7 +147,6 @@
     color: var(--ink-soft); border: 1px solid var(--line); padding: 0.4rem 0.85rem;
     border-radius: 999px; font-weight: 500; }
   .v-tag.status-current { color: var(--accent); border-color: var(--accent); }
-  .v-tag.status-past { color: var(--ink-mute); }
   .v-hero h1 { font-family: var(--sans); font-weight: 800;
     font-size: clamp(3rem, 11vw, 8rem); line-height: 0.88;
     letter-spacing: -0.04em; text-transform: uppercase; margin-bottom: 1.5rem; }
@@ -175,7 +156,7 @@
     font-size: clamp(1.35rem, 2.5vw, 1.875rem); color: var(--ink-soft);
     line-height: 1.4; max-width: 720px; font-weight: 500; }
 
-  /* Overview band, dark */
+  /* Overview band */
   .v-overview { background: var(--dark-bg); color: var(--dark-ink); }
   [data-theme="dark"] .v-overview { background: var(--dark-bg-2); }
   .v-overview .section-label { color: var(--dark-ink-soft); }
@@ -192,18 +173,20 @@
     line-height: 1.75; margin-bottom: 1.5rem; max-width: 62ch; }
   .v-overview p:last-child { margin-bottom: 0; }
   .v-overview strong { color: var(--dark-ink); font-weight: 500; }
+  .v-overview a.v-external { color: var(--accent); font-style: italic;
+    text-decoration: underline; text-underline-offset: 3px; }
 
-  /* Stats hero, big numbers */
-  .v-stats-hero { display: grid; grid-template-columns: repeat(4, 1fr);
+  /* Stats hero */
+  .v-stats-hero { display: grid; grid-template-columns: repeat(3, 1fr);
     border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
     margin-top: 3rem; }
-  @media (max-width: 700px) { .v-stats-hero { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 700px) { .v-stats-hero { grid-template-columns: 1fr; } }
   .v-stat { padding: 1.75rem var(--pad) 1.5rem 1.5rem; border-right: 1px solid var(--line); }
   .v-stat:first-child { padding-left: 0; }
   .v-stat:last-child { border-right: none; }
   @media (max-width: 700px) {
-    .v-stat:nth-child(2) { border-right: none; }
-    .v-stat:nth-child(1), .v-stat:nth-child(2) { border-bottom: 1px solid var(--line); }
+    .v-stat { border-right: none; border-bottom: 1px solid var(--line); padding-left: 0; }
+    .v-stat:last-child { border-bottom: none; }
   }
   .v-stat-num { font-family: var(--sans); font-weight: 800;
     font-size: clamp(2rem, 4.5vw, 3rem); letter-spacing: -0.035em;
@@ -215,7 +198,7 @@
   .v-stat-lbl { font-size: 0.7rem; letter-spacing: 0.18em;
     text-transform: uppercase; color: var(--ink-mute); font-weight: 500; }
 
-  /* Highlights section */
+  /* Highlights */
   .v-highlights .section-title { font-family: var(--sans); font-weight: 800;
     font-size: clamp(2rem, 4.5vw, 3rem); line-height: 1.0;
     letter-spacing: -0.03em; text-transform: uppercase; margin-bottom: 3rem;
@@ -241,7 +224,7 @@
   .v-highlight p { font-size: 0.95rem; color: var(--ink-soft); line-height: 1.65; }
   .v-highlight p strong { color: var(--ink); font-weight: 500; }
 
-  /* Outcome / pullquote */
+  /* Outcome */
   .v-outcome { padding: clamp(3rem, 6vw, 5rem) 0; background: var(--bg-deep); }
   [data-theme="dark"] .v-outcome { background: var(--bg-deep); }
   .v-outcome-inner { display: grid; grid-template-columns: auto 1fr;
@@ -279,50 +262,47 @@
     transition: transform 0.3s; }
   .v-next a:hover .v-next-arrow { transform: rotate(-45deg); }
 
-
-  /* Per-venture colour theme */
+  /* Per-venture colour — P.S. Coffee */
   :root {
-    --accent:       #2563a8;
-    --accent-dark:  #1a4478;
-    --accent-light: #eef4fd;
-    --accent-muted: rgba(37,99,168,0.15);
+    --accent:       #c47820;
+    --accent-dark:  #8a5010;
+    --accent-light: #fdf6ea;
   }
   [data-theme="dark"] {
-    --accent: color-mix(in srgb, #2563a8 80%, #fff);
+    --accent: #d4a04a;
   }
-  .v-hero { position: relative; }
   .v-hero::after {
     content: "";
     position: absolute;
     bottom: 0; left: 0; right: 0;
     height: 3px;
-    background: linear-gradient(90deg, #2563a8, transparent 70%);
+    background: linear-gradient(90deg, #c47820, transparent 70%);
   }
-  .v-hero h1 em { color: #2563a8; }
   .v-tag.status-current {
-    color: #2563a8;
-    border-color: #2563a8;
-    background: rgba(37,99,168,0.15);
+    color: #c47820;
+    border-color: #c47820;
+    background: rgba(196, 120, 32, 0.1);
   }
   .v-overview {
-    background: linear-gradient(135deg, #1a1a18 0%, color-mix(in srgb, #2563a8 18%, #1a1a18) 100%);
+    background: linear-gradient(135deg, #1a1a18 0%, color-mix(in srgb, #c47820 15%, #1a1a18) 100%);
   }
-  .v-overview h2 em { color: #2563a8; }
-  .v-stat-num em { color: #2563a8; }
-  .section-title em { color: #2563a8; }
-  .v-highlight-num { color: #2563a8; }
+  .v-overview h2 em { color: #c47820; }
+  .v-overview a.v-external { color: #c47820; }
+  .v-stat-num em { color: #c47820; }
+  .section-title em { color: #c47820; }
+  .v-highlight-num { color: #c47820; }
   .v-highlight { transition: border-color 0.3s; }
-  .v-highlight:hover { border-color: #2563a8; }
-  .v-highlight:hover h3 { color: #2563a8; transition: color 0.3s; }
-  .v-outcome { background: #eef4fd; }
-  [data-theme="dark"] .v-outcome { background: color-mix(in srgb, #2563a8 12%, #161614); }
-  .v-outcome blockquote em { color: #2563a8; }
-  .v-outcome-label { color: #2563a8; }
-  .v-next-arrow { background: #2563a8; }
-  .v-next-title em { color: #2563a8; }
-  .v-back:hover { color: #2563a8; }
-  .v-overview .section-label::before { background: #2563a8; }
-  .v-overview .section-label { color: color-mix(in srgb, #2563a8 80%, #fff); }
+  .v-highlight:hover { border-color: #c47820; }
+  .v-highlight:hover h3 { color: #c47820; transition: color 0.3s; }
+  .v-outcome { background: #fdf6ea; }
+  [data-theme="dark"] .v-outcome { background: color-mix(in srgb, #c47820 10%, #161614); }
+  .v-outcome blockquote em { color: #c47820; }
+  .v-outcome-label { color: #c47820; }
+  .v-next-arrow { background: #c47820; }
+  .v-next-title em { color: #c47820; }
+  .v-back:hover { color: #c47820; }
+  .v-overview .section-label::before { background: #c47820; }
+  .v-overview .section-label { color: color-mix(in srgb, #c47820 80%, #fff); }
   /* end venture colour */
 
 </style>
@@ -361,38 +341,34 @@
     <div class="container">
       <a href="index.html#ventures" class="v-back reveal">&larr; All ventures</a>
       <div class="v-meta-row reveal delay-1">
-        <span class="v-tag ">Retail &middot; Franchise</span>
-        <span class="v-tag ">Eyewear</span>
-        <span class="v-tag status-past">2015 &ndash; 2026</span>
-        <span class="v-tag ">Surat &amp; Gandhidham</span>
+        <span class="v-tag">Specialty Coffee</span>
+        <span class="v-tag">QSR</span>
+        <span class="v-tag">Ahmedabad, India</span>
+        <span class="v-tag status-current">Building &middot; 2026</span>
       </div>
-      <h1 class="reveal delay-1"><em>Lens</em>kart</h1>
-      <p class="v-tagline reveal delay-2">Early franchise partner, the <em>53rd store</em> in Lenskart&rsquo;s journey from startup to a 1500+ store omni-channel network in India.</p>
+      <h1 class="reveal delay-1">P.S. <em>Coffee</em></h1>
+      <p class="v-tagline reveal delay-2">A grab-and-go specialty coffee brand designed for the city's daily coffee drinker. Not an occasion. <em>A routine.</em></p>
     </div>
   </section>
-
-  <div class="v-cover">
-    <img src="lenskart-store.jpg" alt="Lenskart franchise store — Surat" loading="lazy">
-  </div>
 
   <section class="v-overview">
     <div class="container">
       <div class="v-overview-grid">
         <div class="reveal">
           <div class="section-label">Overview</div>
-          <h2>Eleven years<br>inside a <em>scaling startup.</em></h2>
+          <h2>Building the<br><em>infrastructure.</em></h2>
         </div>
         <div class="reveal delay-1">
-          <p>I joined Lenskart as a franchise partner in <strong>February 2015</strong>, their <strong>53rd store</strong>, and operated within the ecosystem for <strong>11 years</strong>, watching the company scale from an early-stage startup to a 1500+ store omni-channel retail network.</p>
-          <p>Beyond the numbers, it was a front-row seat to how a fast-scaling consumer brand actually operates: how it experiments, how it optimises across pricing, product, and customer experience, and how it transitions a franchise network through generations of technology, from manual processes to iPad-based POS to fully digitised CRM, order tracking, and prescription records.</p>
-          <p>My flagship Surat store, a compact <strong>290 sq ft</strong> footprint, grew monthly revenue from <strong>&#8377;3L to &#8377;15L+</strong> through consultative selling, cross-selling, and value-based customer education. In <strong>2020</strong>, I led the launch of a second franchise unit in Gandhidham, expanding brand presence into a new market.</p>
+          <p>Ahmedabad already has a generation of urban coffee drinkers. What it doesn't have is the infrastructure to support a daily habit. The specialty options that exist are sit-down experiences, occasions rather than routines, priced and placed in ways that don't fit into a typical workday.</p>
+          <p>P.S. Coffee is being built to close that gap. <strong>Compact Pods, 50&ndash;200 sqft formats</strong>, embedded directly where people already spend their time: corporate campuses, co-working spaces, gyms, and high-footfall street corners. No seating, no dwell time, just great coffee, fast.</p>
+          <p>The product is <strong>100% Arabica specialty coffee</strong> alongside <strong>ceremonial-grade matcha</strong>, served through a tight, repeatable menu designed for speed and consistency at the Pod level. The whole thesis is that quality and convenience aren't a tradeoff. We're pre-launch and currently raising a proof round.</p>
+          <p>Follow the build at <a href="https://pscoffee.in" class="v-external" target="_blank" rel="noopener">pscoffee.in</a></p>
         </div>
       </div>
       <div class="v-stats-hero reveal delay-2">
-        <div class="v-stat"><div class="v-stat-num">53<em>rd</em></div><div class="v-stat-lbl">Lenskart store</div></div>
-        <div class="v-stat"><div class="v-stat-num">5<em>x</em></div><div class="v-stat-lbl">Revenue growth</div></div>
-        <div class="v-stat"><div class="v-stat-num">290<span class="unit"> sqft</span></div><div class="v-stat-lbl">Flagship size</div></div>
-        <div class="v-stat"><div class="v-stat-num">11<span class="unit"> yrs</span></div><div class="v-stat-lbl">Partnership</div></div>
+        <div class="v-stat"><div class="v-stat-num">5</div><div class="v-stat-lbl">Pods, launch fleet</div></div>
+        <div class="v-stat"><div class="v-stat-num">100<em>%</em></div><div class="v-stat-lbl">Arabica specialty</div></div>
+        <div class="v-stat"><div class="v-stat-num">50&ndash;200<span class="unit"> sqft</span></div><div class="v-stat-lbl">Pod format</div></div>
       </div>
     </div>
   </section>
@@ -400,66 +376,63 @@
   <section class="v-highlights">
     <div class="container">
       <div class="reveal">
-        <div class="section-label">Highlights</div>
-        <h2 class="section-title">An <em>operator&rsquo;s</em> chapter.</h2>
+        <div class="section-label">What we're building</div>
+        <h2 class="section-title">The <em>thesis,</em> piece by piece.</h2>
       </div>
       <div class="v-highlight-grid">
+
         <div class="v-highlight reveal">
           <span class="v-highlight-num">01</span>
-          <h3>5x revenue growth</h3>
-          <p>Built and scaled a high-performing retail unit on a <strong>290 sq ft</strong> footprint, growing monthly revenue from <strong>&#8377;3L to &#8377;15L+</strong> through consultative selling, cross-selling, and value-based customer education, while improving NPS and reducing returns by addressing customer pain points pre-purchase.</p>
+          <h3>The infrastructure gap</h3>
+          <p>Ahmedabad has the coffee drinker. What it lacks is the daily-habit infrastructure. Specialty options exist, but they're sit-down, occasion-driven, and not built for the person who just wants a great cup on the way to their desk.</p>
         </div>
+
         <div class="v-highlight reveal">
           <span class="v-highlight-num">02</span>
-          <h3>Inside a scaling startup</h3>
-          <p>Hands-on experience in the startup ecosystem, observing how fast-scaling consumer brands operate, experiment, and optimise across <strong>pricing, product, and customer experience</strong> over an 11-year arc.</p>
+          <h3>The Pod format</h3>
+          <p><strong>50&ndash;200 sqft, no seating.</strong> Pods are embedded inside environments where the customer already is: corporate campuses, co-working spaces, gyms, busy corners. The location is the distribution strategy.</p>
         </div>
+
         <div class="v-highlight reveal">
           <span class="v-highlight-num">03</span>
-          <h3>Tech &amp; systems evolution</h3>
-          <p>Adapted across major platform transitions, from manual processes to <strong>iPad-based POS</strong> to fully digitised workflows including CRM, order tracking, prescription records, and customer data management.</p>
+          <h3>Specialty product</h3>
+          <p><strong>100% Arabica specialty coffee</strong> and <strong>ceremonial-grade matcha</strong>, served through a tight, repeatable menu. Quality is non-negotiable; the format enforces speed and consistency at every Pod.</p>
         </div>
+
         <div class="v-highlight reveal">
           <span class="v-highlight-num">04</span>
-          <h3>Market intelligence</h3>
-          <p>Analysed competitor price gaps and D2C trends to position the store as the preferred optical destination in a <strong>high-competition zone</strong>, blending data with on-ground customer signals.</p>
+          <h3>Routine, not occasion</h3>
+          <p>Most specialty coffee in India is priced and placed as a treat. P.S. Coffee is designed to fit inside someone's day without interrupting it, a habit-forming price point, a grab-and-go format, and locations that require zero detour.</p>
         </div>
+
         <div class="v-highlight reveal">
           <span class="v-highlight-num">05</span>
-          <h3>P&amp;L &amp; operations</h3>
-          <p>Managed end-to-end operations including <strong>P&amp;L, store operations, team leadership, hiring, training, SOPs, audits, inventory,</strong> and visual merchandising, aligning team performance with evolving KPIs and KRAs in a high-change environment.</p>
+          <h3>Launch fleet of 5 Pods</h3>
+          <p>The proof round is designed to validate unit economics across <strong>5 Pods</strong> in Ahmedabad, testing location types, throughput, and menu performance before scaling the model.</p>
         </div>
+
         <div class="v-highlight reveal">
           <span class="v-highlight-num">06</span>
-          <h3>Supply chain synergy</h3>
-          <p>Built strategic bridges with Warehouse, Merchandising, and Order Processing heads to bypass escalation bottlenecks, ensuring <strong>100% fulfilment</strong> for special-case customer requirements.</p>
+          <h3>Pre-launch, raising now</h3>
+          <p>Currently in pre-launch phase, raising a proof round to fund the initial Pod fleet. The build is being documented publicly at <strong>pscoffee.in</strong>, including the brand, the thesis, and the progress.</p>
         </div>
-        <div class="v-highlight reveal">
-          <span class="v-highlight-num">07</span>
-          <h3>New market launch, Gandhidham (2020)</h3>
-          <p>Led launch and operations of a new franchise unit in Gandhidham, setting up store operations end-to-end including hiring, training, inventory planning, and SOP implementation. Built local presence in an emerging market while maintaining brand standards.</p>
-        </div>
-        <div class="v-highlight reveal">
-          <span class="v-highlight-num">08</span>
-          <h3>Customer-first culture</h3>
-          <p>Built a store culture rooted in <strong>transparency, product education, and personalised experience</strong>, the kind of relationship-driven retail that turns transactions into repeat customers.</p>
-        </div>
+
       </div>
     </div>
   </section>
 
   <section class="v-outcome">
     <div class="v-outcome-inner">
-      <div class="v-outcome-label reveal"> Key takeaway</div>
-      <blockquote class="reveal delay-1">An eleven-year masterclass in retail operating discipline, franchisee P&amp;L, D2C vs. middleman economics, and what it actually takes to run a consumer brand <em>at scale.</em></blockquote>
+      <div class="v-outcome-label reveal">The thesis</div>
+      <blockquote class="reveal delay-1">Make good coffee a <em>routine</em> rather than an occasion. Priced and placed so it fits into someone's day, instead of interrupting it.</blockquote>
     </div>
   </section>
 
   <section class="v-next">
     <div class="container">
-      <div class="v-next-eyebrow reveal">Next chapter</div>
-      <a href="ximivogue.html" class="reveal delay-1">
-        <span class="v-next-title"><em>Ximi</em>vogue</span>
+      <div class="v-next-eyebrow reveal">Another chapter</div>
+      <a href="pujan-energy.html" class="reveal delay-1">
+        <span class="v-next-title">Pujan <em>Energy</em></span>
         <span class="v-next-arrow">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </span>
