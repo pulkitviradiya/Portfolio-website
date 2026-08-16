@@ -239,6 +239,17 @@
   .about-prose p { font-size: 1.0625rem; color: var(--ink-soft);
     line-height: 1.75; margin-bottom: 1.5rem; max-width: 60ch; }
   .about-prose p:last-child { margin-bottom: 0; }
+  .about-more { max-height: 0; overflow: hidden; opacity: 0;
+    transition: max-height 0.55s ease, opacity 0.4s ease; }
+  .about-more.open { max-height: 1000px; opacity: 1; }
+  .read-more-btn { background: none; border: none; padding: 0; cursor: pointer;
+    font-family: var(--sans); font-size: 0.75rem; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent);
+    display: inline-flex; align-items: center; gap: 0.45rem; margin-top: 0.75rem;
+    transition: gap 0.2s ease; }
+  .read-more-btn:hover { gap: 0.7rem; }
+  .read-more-btn .rm-arrow { display: inline-block; transition: transform 0.35s ease; font-style: normal; }
+  .read-more-btn.open .rm-arrow { transform: rotate(180deg); }
   .about-prose strong { color: var(--ink); font-weight: 500; }
   .about-prose .pullquote { font-family: var(--serif); font-style: italic;
     font-weight: 500; font-size: clamp(1.35rem, 2.2vw, 1.75rem);
@@ -477,15 +488,21 @@
 
           <div class="pullquote">That moment stayed with me. What just happened in there?</div>
 
-          <p>The question led me deep into consumer behaviour, impulse buying, and how retail experiences are designed. I partnered to bring a fast-fashion lifestyle format to Gujarat, opened stores in Vadodara and Surat, and learned what actually drives customers inside a retail space.</p>
+          <div class="about-more" id="aboutMore">
+            <p>The question led me deep into consumer behaviour, impulse buying, and how retail experiences are designed. I partnered to bring a fast-fashion lifestyle format to Gujarat, opened stores in Vadodara and Surat, and learned what actually drives customers inside a retail space.</p>
 
-          <p>Then COVID hit. Imports shut down. What could have been a setback became an opening, instead of waiting for supply chains to recover, we decided to build our own brand. That's how <strong>Candy Floss</strong> was born: a 0&rarr;1 build across brand identity, product development, vendor networks, store experience, and everything in between. We scaled to <strong>11 stores</strong>, built a <strong>200+ vendor</strong> ecosystem, expanded into Phoenix and Palladium malls, and grew gross margins from 35% to 70% through private label and supply-chain control.</p>
+            <p>Then COVID hit. Imports shut down. What could have been a setback became an opening, instead of waiting for supply chains to recover, we decided to build our own brand. That's how <strong>Candy Floss</strong> was born: a 0&rarr;1 build across brand identity, product development, vendor networks, store experience, and everything in between. We scaled to <strong>11 stores</strong>, built a <strong>200+ vendor</strong> ecosystem, expanded into Phoenix and Palladium malls, and grew gross margins from 35% to 70% through private label and supply-chain control.</p>
 
-          <p>Alongside the retail work, I co-founded <strong>Pujan Energy</strong> in 2019, a 0.45 MW solar venture supplying clean power under Open Access to ceramic and paper mill clients in Morbi. Different industry, same operating discipline: end-to-end execution, regulatory navigation, and the slow work of building something that runs at ~99% uptime year after year.</p>
+            <p>Alongside the retail work, I co-founded <strong>Pujan Energy</strong> in 2019, a 0.45 MW solar venture supplying clean power under Open Access to ceramic and paper mill clients in Morbi. Different industry, same operating discipline: end-to-end execution, regulatory navigation, and the slow work of building something that runs at ~99% uptime year after year.</p>
 
-          <p>Through all of it, one belief has stayed constant: <strong>businesses don't grow just by selling products. They grow by understanding people.</strong> Most of my work is translating that understanding into execution, store layouts, product mix, pricing, customer experience, or in solar's case, the right plant configuration for industrial loads.</p>
+            <p>Through all of it, one belief has stayed constant: <strong>businesses don't grow just by selling products. They grow by understanding people.</strong> Most of my work is translating that understanding into execution, store layouts, product mix, pricing, customer experience, or in solar's case, the right plant configuration for industrial loads.</p>
 
-          <p>Lately I've been experimenting with AI to simplify workflows and create leverage in day-to-day operations. What I lack in technical skills, I make up for with curiosity and a strong willingness to learn. Outside work: pour-over coffee every morning, podcasts, and a long-running habit of breaking down brands to understand what makes them tick.</p>
+            <p>Lately I've been experimenting with AI to simplify workflows and create leverage in day-to-day operations. What I lack in technical skills, I make up for with curiosity and a strong willingness to learn. Outside work: pour-over coffee every morning, podcasts, and a long-running habit of breaking down brands to understand what makes them tick.</p>
+          </div>
+
+          <button class="read-more-btn" id="readMoreBtn" aria-expanded="false" aria-controls="aboutMore">
+            Read more <em class="rm-arrow">&#8964;</em>
+          </button>
         </div>
       </div>
 
@@ -703,6 +720,14 @@
     entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('in'); io.unobserve(entry.target); } });
   }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  const readMoreBtn = document.getElementById('readMoreBtn');
+  const aboutMore = document.getElementById('aboutMore');
+  readMoreBtn.addEventListener('click', () => {
+    const isOpen = aboutMore.classList.toggle('open');
+    readMoreBtn.classList.toggle('open', isOpen);
+    readMoreBtn.setAttribute('aria-expanded', isOpen);
+    readMoreBtn.innerHTML = isOpen ? 'Read less <em class="rm-arrow" style="transform:rotate(180deg)">&#8964;</em>' : 'Read more <em class="rm-arrow">&#8964;</em>';
+  });
 </script>
 
 </body>
