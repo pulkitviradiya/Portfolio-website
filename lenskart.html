@@ -121,12 +121,13 @@
   .footer-inner .mark { font-family: var(--serif); font-style: italic;
     text-transform: none; letter-spacing: 0; font-size: 0.95rem; }
   /* Radhe Radhe */
-  .radhe-section { text-align: center; padding: 2.5rem var(--pad) 2.5rem; }
+  .radhe-section { text-align: center; padding: 0.9rem var(--pad) 0.75rem;
+    border-bottom: 1px solid var(--line); }
   .radhe-rule { border: none; height: 1px;
     background: linear-gradient(to right, transparent, #b5872a 30%, #b5872a 70%, transparent);
-    margin: 0 auto; max-width: 420px; }
-  .radhe-text { font-family: var(--serif); font-size: 1.65rem; font-weight: 700;
-    letter-spacing: 0.24em; color: #b5872a; padding: 1.1rem 0; display: block; }
+    margin: 0 auto; max-width: 200px; }
+  .radhe-text { font-family: var(--serif); font-size: 0.85rem; font-weight: 700;
+    letter-spacing: 0.24em; color: #b5872a; padding: 0.45rem 0; display: block; }
   [data-theme="dark"] .radhe-rule { background: linear-gradient(to right, transparent, #e8c46a 30%, #e8c46a 70%, transparent); }
   [data-theme="dark"] .radhe-text { color: #e8c46a; }
 
@@ -467,12 +468,12 @@
 
 </main>
 
-<div class="radhe-section">
-  <hr class="radhe-rule">
-  <span class="radhe-text">|| राधे राधे ||</span>
-  <hr class="radhe-rule">
-</div>
 <footer>
+  <div class="radhe-section">
+    <hr class="radhe-rule">
+    <span class="radhe-text">|| राधे राधे ||</span>
+    <hr class="radhe-rule">
+  </div>
   <div class="footer-inner">
     <span>&copy; <span id="year"></span> Pulkit Viradiya</span>
     <span class="mark">Built with intent.</span>
