@@ -37,3 +37,7 @@ build/
 __pycache__/
 *.py[cod]
 *.pyo
+.vercel
+
+# Regenerated local review pages; production HTML is tracked at the root.
+concept-*.html

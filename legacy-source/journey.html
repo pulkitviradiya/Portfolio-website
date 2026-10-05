@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'none'; base-uri 'self'; form-action 'none';">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=()">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<meta name="description" content="Pulkit Viradiya's journey, education, research, internships, and the path from PDEU to building consumer brands and clean energy in Gujarat." />
+<title>Journey, Pulkit Viradiya</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+
+  :root {
+    --bg: #f3f1ea; --bg-deep: #ebe8df; --bg-card: #ffffff;
+    --ink: #1a1a1a; --ink-soft: #4a4a4a; --ink-mute: #8a8a85;
+    --line: #d8d4c8;
+    --dark-bg: #1f1f1d; --dark-bg-2: #2a2a26;
+    --dark-ink: #f3f1ea; --dark-ink-soft: #b8b5ac; --dark-line: #3a3a36;
+    --accent: #6b5443;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --maxw: 1240px;
+    --pad: clamp(1.25rem, 4vw, 2.5rem);
+    --section-pad: clamp(4rem, 9vw, 7rem);
+  }
+  [data-theme="dark"] {
+    --bg: #161614; --bg-deep: #1f1f1d; --bg-card: #1f1f1d;
+    --ink: #f3f1ea; --ink-soft: #c9c6bd; --ink-mute: #7a7872;
+    --line: #484840; --accent: #c69a7a;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--sans); background: var(--bg); color: var(--ink);
+    line-height: 1.6; font-size: 16px;
+    -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+    transition: background 0.4s, color 0.4s; overflow-x: hidden;
+  }
+  ::selection { background: var(--ink); color: var(--bg); }
+  p { text-align: justify; }
+  .container { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--pad); }
+  section { padding: var(--section-pad) 0; }
+
+  /* Nav */
+  .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+    padding: 1.25rem var(--pad); display: flex; align-items: center;
+    justify-content: space-between; transition: background 0.4s, backdrop-filter 0.4s; }
+  .nav.scrolled { background: color-mix(in srgb, var(--bg) 85%, transparent);
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line); }
+  .nav-logo { display: inline-flex; align-items: center; gap: 0.6rem;
+    text-decoration: none; color: var(--ink); font-size: 0.72rem;
+    font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; }
+  .nav-logo .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--ink); }
+  .nav-right { display: flex; align-items: center; gap: 0.75rem; }
+  .menu-pill { display: inline-flex; align-items: center; gap: 0.6rem;
+    background: var(--ink); color: var(--bg); padding: 0.65rem 1.1rem 0.65rem 1.25rem;
+    border-radius: 999px; font-size: 0.7rem; font-weight: 600;
+    letter-spacing: 0.18em; text-transform: uppercase; border: none;
+    cursor: pointer; transition: transform 0.2s; font-family: var(--sans); }
+  .menu-pill:hover { transform: translateY(-1px); }
+  .menu-pill .lines { display: flex; flex-direction: column; gap: 3px; }
+  .menu-pill .lines span { display: block; width: 14px; height: 1.5px; background: var(--bg); }
+  .theme-toggle { background: transparent; border: 1px solid var(--line);
+    color: var(--ink); width: 38px; height: 38px; border-radius: 50%;
+    cursor: pointer; display: inline-flex; align-items: center;
+    justify-content: center; transition: border-color 0.2s, transform 0.3s; }
+  .theme-toggle:hover { border-color: var(--ink); transform: rotate(20deg); }
+  .theme-toggle svg { width: 16px; height: 16px; }
+  .theme-toggle .sun { display: none; }
+  [data-theme="dark"] .theme-toggle .sun { display: block; }
+  [data-theme="dark"] .theme-toggle .moon { display: none; }
+
+  /* Menu overlay */
+  .menu-overlay { position: fixed; inset: 0; background: var(--ink);
+    color: var(--bg); z-index: 100; display: flex; align-items: center;
+    justify-content: center; opacity: 0; pointer-events: none;
+    transition: opacity 0.4s; }
+  .menu-overlay.open { opacity: 1; pointer-events: auto; }
+  .menu-overlay ul { list-style: none; text-align: center;
+    display: flex; flex-direction: column; gap: 1.25rem; }
+  .menu-overlay a { font-family: var(--serif); font-size: clamp(2.25rem, 7vw, 4.5rem);
+    color: var(--bg); text-decoration: none; font-weight: 500;
+    line-height: 1; letter-spacing: -0.02em; transition: opacity 0.2s;
+    display: inline-block; }
+  .menu-overlay a:hover { opacity: 0.6; font-style: italic; }
+  .menu-overlay .close { position: absolute; top: 1.5rem; right: 1.5rem;
+    background: transparent; border: 1px solid var(--bg); color: var(--bg);
+    width: 44px; height: 44px; border-radius: 50%; cursor: pointer;
+    font-size: 1.25rem; }
+
+  /* Marquee */
+  .marquee { background: var(--ink); color: var(--bg); padding: 1.25rem 0;
+    overflow: hidden; white-space: nowrap; }
+  .marquee-track { display: inline-flex; animation: marquee 35s linear infinite; will-change: transform; }
+  .marquee-group { display: inline-flex; align-items: center; gap: 2.5rem; padding-right: 2.5rem; }
+  .marquee span { font-family: var(--serif); font-style: italic;
+    font-size: clamp(1.5rem, 3vw, 2.25rem); font-weight: 500; letter-spacing: -0.01em; }
+  .marquee .diamond { color: var(--accent); font-family: var(--sans);
+    font-style: normal; font-size: 1rem; }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* Section heading */
+  .section-label { font-size: 0.72rem; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--ink-mute); margin-bottom: 1.25rem;
+    display: inline-flex; align-items: center; gap: 0.75rem; }
+  .section-label::before { content: ''; width: 24px; height: 1px; background: var(--ink-mute); }
+
+  /* Footer */
+  footer { border-top: 1px solid var(--line); padding: 2.5rem 0; }
+  .footer-inner { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--pad);
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 1rem; font-size: 0.72rem; color: var(--ink-mute);
+    letter-spacing: 0.15em; text-transform: uppercase; font-weight: 500; }
+  .footer-inner .mark { font-family: var(--serif); font-style: italic;
+    text-transform: none; letter-spacing: 0; font-size: 0.95rem; }
+  /* Radhe Radhe */
+  .radhe-section { text-align: center; padding: 0.9rem var(--pad) 0.75rem;
+    border-bottom: 1px solid var(--line); }
+  .radhe-rule { border: none; height: 1px;
+    background: linear-gradient(to right, transparent, #b5872a 30%, #b5872a 70%, transparent);
+    margin: 0 auto; max-width: 200px; }
+  .radhe-text { font-family: var(--serif); font-size: 0.85rem; font-weight: 700;
+    letter-spacing: 0.24em; color: #b5872a; padding: 0.45rem 0; display: block; }
+  [data-theme="dark"] .radhe-rule { background: linear-gradient(to right, transparent, #e8c46a 30%, #e8c46a 70%, transparent); }
+  [data-theme="dark"] .radhe-text { color: #e8c46a; }
+
+  /* Reveal */
+  .reveal { opacity: 0; transform: translateY(28px);
+    transition: opacity 1s cubic-bezier(0.2, 0.8, 0.2, 1),
+                transform 1s cubic-bezier(0.2, 0.8, 0.2, 1); }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+  .reveal.delay-1 { transition-delay: 0.08s; }
+  .reveal.delay-2 { transition-delay: 0.16s; }
+  .reveal.delay-3 { transition-delay: 0.24s; }
+  .reveal.delay-4 { transition-delay: 0.32s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    .reveal { opacity: 1; transform: none; }
+    .marquee-track { animation: none; }
+  }
+
+
+  /* Journey hero */
+  .j-hero { padding-top: 7rem; padding-bottom: 3rem; position: relative; overflow: hidden; }
+
+  /* Hero decorative layer — footprints + portrait */
+  .j-deco { position: absolute; inset: 0; pointer-events: none; }
+
+  /* Footprints SVG */
+  .j-fps {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+  }
+  /* Each footprint loops on a 5 s cycle.
+     Negative delays stagger them so they walk in sequence
+     and the loop restarts seamlessly. */
+  .j-fp {
+    fill: var(--accent);
+    opacity: 0;
+    animation: fp-loop 5s ease-in-out infinite;
+  }
+  @keyframes fp-loop {
+    0%   { opacity: 0; }
+    8%   { opacity: 0.25; }
+    65%  { opacity: 0.25; }
+    80%  { opacity: 0; }
+    100% { opacity: 0; }
+  }
+
+  /* Portrait circle */
+  .j-portrait {
+    position: absolute;
+    top: 5.75rem;
+    right: calc(var(--pad) + 0.5rem);
+    width: clamp(96px, 10.5vw, 148px);
+    height: clamp(96px, 10.5vw, 148px);
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    background: var(--bg-deep);
+    box-shadow: 0 2px 24px color-mix(in srgb, var(--ink) 6%, transparent);
+  }
+  .j-portrait img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+  }
+
+  @media (max-width: 768px) { .j-deco { display: none; } }
+
+  .j-back { display: inline-flex; align-items: center; gap: 0.5rem;
+    font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--ink-mute); text-decoration: none; font-weight: 600;
+    margin-bottom: 3rem; transition: color 0.2s, gap 0.3s; }
+  .j-back:hover { color: var(--ink); gap: 0.75rem; }
+
+  .j-hero h1 { font-family: var(--sans); font-weight: 800;
+    font-size: clamp(2.75rem, 8vw, 6rem); line-height: 0.9;
+    letter-spacing: -0.035em; text-transform: uppercase; margin-bottom: 1.5rem; }
+  .j-hero h1 em { font-family: var(--serif); font-style: italic;
+    font-weight: 500; color: var(--accent); text-transform: none; letter-spacing: -0.025em; }
+  .j-tagline { font-family: var(--serif); font-style: italic;
+    font-size: clamp(1.35rem, 2.5vw, 1.875rem); color: var(--ink-soft);
+    line-height: 1.4; max-width: 720px; font-weight: 500; margin-bottom: 2rem; }
+
+  /* Profile facts grid */
+  .j-facts { display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+    margin-top: 3rem; }
+  @media (max-width: 800px) { .j-facts { grid-template-columns: repeat(2, 1fr); } }
+  .j-fact { padding: 1.75rem var(--pad) 1.5rem 1.5rem; border-right: 1px solid var(--line); }
+  .j-fact:first-child { padding-left: 0; }
+  .j-fact:last-child { border-right: none; }
+  @media (max-width: 800px) {
+    .j-fact:nth-child(2) { border-right: none; }
+    .j-fact:nth-child(1), .j-fact:nth-child(2) { border-bottom: 1px solid var(--line); }
+  }
+  .j-fact-lbl { font-size: 0.65rem; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--ink-mute); font-weight: 600;
+    margin-bottom: 0.6rem; }
+  .j-fact-val { font-family: var(--sans); font-weight: 700;
+    font-size: 1.05rem; letter-spacing: -0.01em; color: var(--ink); line-height: 1.3; }
+  .j-fact-val em { font-family: var(--serif); font-style: italic;
+    font-weight: 500; color: var(--accent); }
+  .j-fact-val .sub { display: block; font-family: var(--sans);
+    font-weight: 400; font-size: 0.8rem; color: var(--ink-mute);
+    margin-top: 0.3rem; letter-spacing: 0; }
+
+  /* Section labels reused */
+  .j-section { padding: clamp(3.5rem, 7vw, 6rem) 0; }
+  .j-section-head { margin-bottom: 3.5rem; max-width: 800px; }
+  .j-section-head h2 { font-family: var(--sans); font-weight: 800;
+    font-size: clamp(1.875rem, 4vw, 2.75rem); line-height: 1.0;
+    letter-spacing: -0.03em; text-transform: uppercase; }
+  .j-section-head h2 em { font-family: var(--serif); font-style: italic;
+    font-weight: 500; color: var(--accent); text-transform: none; letter-spacing: -0.02em; }
+
+  /* TIMELINE, the centrepiece */
+  .timeline { position: relative; padding-left: 0; }
+  .timeline::before { content: ''; position: absolute;
+    left: 11px; top: 8px; bottom: 8px; width: 1px;
+    background: linear-gradient(to bottom, transparent, var(--line) 8%, var(--line) 92%, transparent); }
+  @media (min-width: 900px) {
+    .timeline { padding-left: 0; }
+    .timeline::before { left: 11px; }
+  }
+
+  .t-item { position: relative; padding: 0 0 3rem 3rem;
+    display: grid; grid-template-columns: 1fr; gap: 1rem; }
+  .t-item:last-child { padding-bottom: 0; }
+  @media (min-width: 900px) {
+    .t-item { grid-template-columns: 140px 1fr; gap: 2.5rem; padding-left: 3rem; }
+  }
+
+  .t-item::before { content: ''; position: absolute; left: 4px; top: 6px;
+    width: 15px; height: 15px; border-radius: 50%;
+    background: var(--bg); border: 2px solid var(--ink);
+    z-index: 2; transition: background 0.3s, transform 0.3s; }
+  .t-item.is-current::before { background: var(--accent); border-color: var(--accent); }
+  .t-item.is-milestone::before { background: var(--ink); }
+  .t-item:hover::before { transform: scale(1.15); }
+
+  .t-year { font-family: var(--sans); font-weight: 800;
+    font-size: 1.25rem; letter-spacing: -0.02em; color: var(--ink);
+    line-height: 1; padding-top: 2px; }
+  .t-year .duration { display: block; font-family: var(--serif);
+    font-style: italic; font-weight: 500; font-size: 0.85rem;
+    color: var(--ink-mute); letter-spacing: 0; margin-top: 0.3rem; }
+
+  .t-content { }
+  .t-cat { display: inline-block; font-size: 0.6rem;
+    letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent);
+    font-weight: 600; margin-bottom: 0.6rem; }
+  .t-title { font-family: var(--sans); font-weight: 700;
+    font-size: 1.25rem; letter-spacing: -0.015em; line-height: 1.3;
+    margin-bottom: 0.35rem; color: var(--ink); }
+  .t-title em { font-family: var(--serif); font-style: italic;
+    color: var(--accent); font-weight: 500; }
+  .t-sub { font-size: 0.85rem; color: var(--ink-mute);
+    margin-bottom: 0.85rem; letter-spacing: 0.02em; }
+  .t-desc { font-size: 0.95rem; color: var(--ink-soft); line-height: 1.65;
+    max-width: 62ch; }
+  .t-desc strong { color: var(--ink); font-weight: 500; }
+  .t-desc + .t-desc { margin-top: 0.75rem; }
+
+  /* Languages section */
+  .j-langs-section { background: var(--bg-deep); }
+  [data-theme="dark"] .j-langs-section { background: var(--bg-deep); }
+  .j-langs-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+  @media (max-width: 800px) { .j-langs-grid { grid-template-columns: repeat(2, 1fr); } }
+  .j-lang { padding: 1.75rem 1.5rem; background: var(--bg);
+    border: 1px solid var(--line); border-radius: 10px;
+    transition: transform 0.3s, border-color 0.3s; }
+  .j-lang:hover { transform: translateY(-3px); border-color: var(--accent); }
+  .j-lang-name { font-family: var(--serif); font-style: italic;
+    font-weight: 500; font-size: 1.875rem; letter-spacing: -0.015em;
+    color: var(--ink); line-height: 1; margin-bottom: 0.5rem; }
+  .j-lang-level { font-size: 0.65rem; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--ink-mute); font-weight: 600; }
+  .j-lang-bar { margin-top: 1rem; height: 3px; background: var(--line);
+    border-radius: 999px; overflow: hidden; }
+  .j-lang-bar span { display: block; height: 100%; background: var(--accent);
+    border-radius: 999px; transform-origin: left;
+    animation: barFill 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
+  @keyframes barFill { from { transform: scaleX(0); } }
+
+  /* Skills + Interests two-col band */
+  .j-twocol { display: grid; grid-template-columns: 1fr 1fr;
+    gap: clamp(2rem, 5vw, 4rem); }
+  @media (max-width: 800px) { .j-twocol { grid-template-columns: 1fr; gap: 2.5rem; } }
+  .j-block-label { font-family: var(--serif); font-style: italic;
+    font-weight: 500; font-size: 1.5rem; color: var(--accent);
+    letter-spacing: -0.015em; margin-bottom: 1.5rem; }
+  .j-list { list-style: none; padding: 0; }
+  .j-list li { padding: 1rem 0; border-bottom: 1px solid var(--line);
+    font-size: 1rem; color: var(--ink); display: flex;
+    align-items: baseline; gap: 1rem; }
+  .j-list li:last-child { border-bottom: none; }
+  .j-list .marker { font-family: var(--serif); font-style: italic;
+    color: var(--accent); font-weight: 500; font-size: 0.85rem;
+    min-width: 24px; }
+  .j-list .desc { color: var(--ink-mute); font-size: 0.85rem;
+    margin-left: auto; text-align: right; flex-shrink: 0; }
+
+  /* Whats next callout */
+  .j-next-up { background: var(--dark-bg); color: var(--dark-ink);
+    padding: clamp(3rem, 6vw, 5rem) 0; }
+  [data-theme="dark"] .j-next-up { background: var(--dark-bg-2); }
+  .j-next-up .section-label { color: var(--dark-ink-soft); }
+  .j-next-up .section-label::before { background: var(--dark-ink-soft); }
+  .j-next-up h2 { font-family: var(--sans); font-weight: 800;
+    font-size: clamp(1.75rem, 4vw, 2.75rem); line-height: 1.0;
+    letter-spacing: -0.03em; text-transform: uppercase;
+    margin-bottom: 1.5rem; max-width: 720px; }
+  .j-next-up h2 em { font-family: var(--serif); font-style: italic;
+    font-weight: 500; color: var(--accent); text-transform: none; letter-spacing: -0.02em; }
+  .j-next-up p { font-size: 1.0625rem; color: var(--dark-ink-soft);
+    line-height: 1.7; max-width: 60ch; }
+
+  /* Back to portfolio link */
+  .j-end { padding: clamp(4rem, 8vw, 6rem) 0; border-top: 1px solid var(--line); }
+  .j-end-eyebrow { font-size: 0.7rem; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--ink-mute); margin-bottom: 1.5rem;
+    display: inline-flex; align-items: center; gap: 0.75rem; }
+  .j-end-eyebrow::before { content: ''; width: 24px; height: 1px; background: var(--ink-mute); }
+  .j-end a { display: flex; justify-content: space-between; align-items: center;
+    gap: 2rem; text-decoration: none; color: var(--ink); padding: 1.5rem 0;
+    border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+    transition: padding 0.3s; flex-wrap: wrap; }
+  .j-end a:hover { padding-left: 0.75rem; }
+  .j-end-title { font-family: var(--sans); font-weight: 800;
+    font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1; letter-spacing: -0.03em;
+    text-transform: uppercase; }
+  .j-end-title em { font-family: var(--serif); font-style: italic;
+    font-weight: 500; color: var(--accent); text-transform: none; letter-spacing: -0.02em; }
+  .j-end-arrow { width: 56px; height: 56px; border-radius: 50%;
+    background: var(--ink); color: var(--bg); display: inline-flex;
+    align-items: center; justify-content: center; flex-shrink: 0;
+    transition: transform 0.3s; }
+  .j-end a:hover .j-end-arrow { transform: rotate(-45deg); }
+
+
+  /* VARIANT B, Bold Epochs + Per-category colour pop */
+  /* Each .t-item carries --item-accent inline; falls back to site --accent */
+  @media (min-width: 900px) {
+    .t-item { grid-template-columns: 170px 1fr; }
+  }
+  .t-year { font-size: 1.65rem; letter-spacing: -0.03em; }
+  .t-item.is-milestone .t-year,
+  .t-item.is-current  .t-year {
+    color: var(--item-accent, var(--accent)); font-size: 2rem; }
+  .t-year .duration { color: var(--ink-soft); font-size: 0.78rem; }
+  .j-fact-val .sub  { color: var(--ink-soft); }
+
+  /* Filled pill category tags, per-entry colour */
+  .t-cat {
+    background: var(--item-accent, var(--accent)); color: #fff;
+    padding: 0.22rem 0.7rem; border-radius: 999px;
+    font-size: 0.58rem; letter-spacing: 0.2em;
+    font-weight: 700; margin-bottom: 0.75rem;
+    display: inline-block;
+  }
+
+  /* Milestone/current content: left stripe in entry colour */
+  .t-item.is-milestone .t-content,
+  .t-item.is-current  .t-content {
+    border-left: 3px solid var(--item-accent, var(--accent));
+    padding-left: 1.25rem;
+  }
+  /* Non-milestone entries: thinner muted stripe */
+  .t-item:not(.is-milestone):not(.is-current) .t-content {
+    border-left: 2px solid color-mix(in srgb, var(--item-accent, var(--accent)) 35%, transparent);
+    padding-left: 1.25rem;
+  }
+
+  /* Title em italics take entry colour */
+  .t-title em { color: var(--item-accent, var(--accent)); }
+
+  /* Invisible venture links, clickable but visually silent */
+  .t-venture-link {
+    color: inherit;
+    text-decoration: none;
+    cursor: inherit;
+  }
+  .t-venture-link:hover,
+  .t-venture-link:visited,
+  .t-venture-link:focus {
+    color: inherit;
+    text-decoration: none;
+    outline: none;
+  }
+
+  /* Timeline dots: entry colour */
+  .t-item::before {
+    border-color: var(--item-accent, var(--accent)); }
+  .t-item.is-milestone::before {
+    background: var(--item-accent, var(--accent));
+    border-color: var(--item-accent, var(--accent)); }
+  .t-item.is-current::before {
+    background: var(--item-accent, var(--accent));
+    border-color: var(--item-accent, var(--accent));
+    box-shadow: 0 0 0 5px color-mix(in srgb, var(--item-accent, var(--accent)) 18%, transparent); }
+
+  /* Timeline thread: multi-stop gradient to hint category colours */
+  .timeline::before {
+    background: linear-gradient(to bottom,
+      transparent 0%,
+      var(--line) 5%,
+      var(--line) 95%,
+      transparent 100%);
+  }
+
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav-logo"><span class="dot"></span> Pulkit</a>
+  <div class="nav-right">
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+      <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+    </button>
+    <button class="menu-pill" id="menuOpen" aria-label="Open menu">Menu <span class="lines"><span></span><span></span></span></button>
+  </div>
+</nav>
+
+<div class="menu-overlay" id="menuOverlay" aria-hidden="true">
+  <button class="close" id="menuClose" aria-label="Close menu">&times;</button>
+  <ul>
+    <li><a href="index.html#about" data-menu-link>About</a></li>
+    <li><a href="journey.html" data-menu-link>Journey</a></li>
+    <li><a href="index.html#ventures" data-menu-link>Ventures</a></li>
+    <li><a href="ps-coffee.html" data-menu-link>P.S. Coffee</a></li>
+    <li><a href="pujan-energy.html" data-menu-link>Pujan Energy</a></li>
+    <li><a href="candy-floss.html" data-menu-link>Candy Floss</a></li>
+    <li><a href="lenskart.html" data-menu-link>Lenskart</a></li>
+    <li><a href="ximivogue.html" data-menu-link>Ximivogue</a></li>
+    <li><a href="index.html#contact" data-menu-link>Contact</a></li>
+  </ul>
+</div>
+
+<main id="top">
+
+  <section class="j-hero">
+
+    <!-- Decorative layer: animated footprints + portrait -->
+    <div class="j-deco" aria-hidden="true">
+
+      <!-- Footprints: 8 steps in the empty right zone only, clear of all text -->
+      <!-- preserveAspectRatio="none" so x/y positions map linearly to screen % -->
+      <svg class="j-fps" viewBox="0 0 1200 620" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <!-- Right foot -->
+          <g id="jfp-r">
+            <ellipse cx="0" cy="1.5" rx="5.5" ry="9.5"/>
+            <ellipse cx="-5"   cy="-9"    rx="2.2" ry="2"/>
+            <ellipse cx="-2"   cy="-11.5" rx="2.5" ry="2.3"/>
+            <ellipse cx="1.5"  cy="-12"   rx="2.5" ry="2.3"/>
+            <ellipse cx="4.5"  cy="-10.5" rx="2.2" ry="2"/>
+            <ellipse cx="6.5"  cy="-8.5"  rx="1.8" ry="1.8"/>
+          </g>
+          <!-- Left foot (mirrored toes) -->
+          <g id="jfp-l">
+            <ellipse cx="0" cy="1.5" rx="5.5" ry="9.5"/>
+            <ellipse cx="5"    cy="-9"    rx="2.2" ry="2"/>
+            <ellipse cx="2"    cy="-11.5" rx="2.5" ry="2.3"/>
+            <ellipse cx="-1.5" cy="-12"   rx="2.5" ry="2.3"/>
+            <ellipse cx="-4.5" cy="-10.5" rx="2.2" ry="2"/>
+            <ellipse cx="-6.5" cy="-8.5"  rx="1.8" ry="1.8"/>
+          </g>
+        </defs>
+        <!-- Path: (786,559) → (1064,110) all in the right 35% of the viewBox -->
+        <!-- Negative delays create a seamless infinite walking loop -->
+        <use href="#jfp-r" class="j-fp" transform="translate(786,559) rotate(33)" style="animation-delay:-5.0s"/>
+        <use href="#jfp-l" class="j-fp" transform="translate(815,488) rotate(33)" style="animation-delay:-4.5s"/>
+        <use href="#jfp-r" class="j-fp" transform="translate(869,433) rotate(33)" style="animation-delay:-4.0s"/>
+        <use href="#jfp-l" class="j-fp" transform="translate(898,362) rotate(33)" style="animation-delay:-3.5s"/>
+        <use href="#jfp-r" class="j-fp" transform="translate(951,307) rotate(33)" style="animation-delay:-3.0s"/>
+        <use href="#jfp-l" class="j-fp" transform="translate(981,236) rotate(33)" style="animation-delay:-2.5s"/>
+        <use href="#jfp-r" class="j-fp" transform="translate(1034,181) rotate(33)" style="animation-delay:-2.0s"/>
+        <use href="#jfp-l" class="j-fp" transform="translate(1064,110) rotate(33)" style="animation-delay:-1.5s"/>
+      </svg>
+
+      <!-- Round portrait — face facing right -->
+      <div class="j-portrait">
+        <img src="pulkit-right.jpg" alt="Pulkit Viradiya" onerror="this.style.display='none'">
+      </div>
+
+    </div><!-- /.j-deco -->
+
+    <div class="container">
+      <a href="index.html" class="j-back reveal">&larr; Back to portfolio</a>
+
+      <h1 class="reveal delay-1">The <em>journey,</em><br>so far.</h1>
+      <p class="j-tagline reveal delay-2">
+        From Surat to Cairo to Macau to Ahmedabad, the education, research, and early experiences that shaped the operator I&rsquo;ve become.
+      </p>
+
+      <div class="j-facts reveal delay-3">
+        <div class="j-fact">
+          <div class="j-fact-lbl">Age</div>
+          <div class="j-fact-val">33<span class="sub">Born 1992</span></div>
+        </div>
+        <div class="j-fact">
+          <div class="j-fact-lbl">Based in</div>
+          <div class="j-fact-val">Ahmedabad<span class="sub">Gujarat, India</span></div>
+        </div>
+        <div class="j-fact">
+          <div class="j-fact-lbl">In business</div>
+          <div class="j-fact-val">11<em> yrs</em><span class="sub">Since Feb 2015</span></div>
+        </div>
+        <div class="j-fact">
+          <div class="j-fact-lbl">Languages</div>
+          <div class="j-fact-val">4<span class="sub">Including English</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="j-section">
+    <div class="container">
+      <div class="j-section-head reveal">
+        <div class="section-label">Timeline</div>
+        <h2>Where it <em>began.</em></h2>
+      </div>
+      <div class="timeline">
+      <div class="t-item reveal" style="--item-accent:#4f46e5">
+        <div class="t-year">1995<span class="duration">1995, 1998</span></div>
+        <div class="t-content">
+          <span class="t-cat">Education</span>
+          <h3 class="t-title">Pre-primary at <em>Shantinagar High School</em></h3>
+          <div class="t-sub">Mira Road, Mumbai</div>
+          <p class="t-desc">The earliest school years, spent at Shantinagar High School in Mira Road, Mumbai.</p>
+        </div>
+      </div>
+      <div class="t-item reveal" style="--item-accent:#4f46e5">
+        <div class="t-year">1998<span class="duration">1998, 2001</span></div>
+        <div class="t-content">
+          <span class="t-cat">Education</span>
+          <h3 class="t-title">Primary at <em>Shantinagar High School</em></h3>
+          <div class="t-sub">Mira Road, Mumbai</div>
+          <p class="t-desc">Continued primary schooling at Shantinagar High School, building the early foundation before moving ahead to Gujarat.</p>
+        </div>
+      </div>
+      <div class="t-item reveal" style="--item-accent:#4f46e5">
+        <div class="t-year">2001<span class="duration">2001, 2003</span></div>
+        <div class="t-content">
+          <span class="t-cat">Education</span>
+          <h3 class="t-title">Primary at <em>M G M Amin &amp; V N Savani School</em></h3>
+          <div class="t-sub">Shree Vallabh Ashram &middot; Killa Pardi, Valsad</div>
+          <p class="t-desc">Primary schooling at Shree Vallabh Ashram&rsquo;s M G M Amin &amp; V N Savani School in Killa Pardi, Valsad.</p>
+        </div>
+      </div>
+      <div class="t-item reveal" style="--item-accent:#4f46e5">
+        <div class="t-year">2003<span class="duration">2003, 2005</span></div>
+        <div class="t-content">
+          <span class="t-cat">Education</span>
+          <h3 class="t-title">Schooling at <em>Sardar Vallabhbhai Patel Vidyalaya</em></h3>
+          <div class="t-sub">Mira Bhayander, Mumbai</div>
+          <p class="t-desc">A formative school chapter at Sardar Vallabhbhai Patel Vidyalaya in Mira Bhayander, Mumbai.</p>
+        </div>
+      </div>
+      <div class="t-item reveal" style="--item-accent:#4f46e5">
+        <div class="t-year">2005<span class="duration">2005, 2008</span></div>
+        <div class="t-content">
+          <span class="t-cat">Education</span>
+          <h3 class="t-title">SSC at <em>P. P. Savani International School</em></h3>
+          <div class="t-sub">Secondary School Certificate</div>
+          <p class="t-desc">Completed SSC at P. P. Savani International School.</p>
+        </div>
+      </div>
+      <div class="t-item reveal" style="--item-accent:#4f46e5">
+        <div class="t-year">2008<span class="duration">2008, 2010</span></div>
+        <div class="t-content">
+          <span class="t-cat">Education</span>
+          <h3 class="t-title">HSC at <em>P. P. Savani International School</em></h3>
+          <div class="t-sub">Business, Commerce, General</div>
+          <p class="t-desc">Completed HSC in Business/Commerce, General at P. P. Savani International School.</p>
+        </div>
+      </div>
+      <div class="t-item is-milestone reveal" style="--item-accent:#4f46e5">
+        <div class="t-year">2010<span class="duration">2010, 2014</span></div>
+        <div class="t-content">
+          <span class="t-cat">Education</span>
+          <h3 class="t-title">BBA at <em>Pandit Deendayal Energy University</em></h3>
+          <div class="t-sub">Pandit Deendayal Energy University &middot; Business Administration, Economics</div>
+          <p class="t-desc">Bachelor of Business Administration, Business Administration with Economics focus. The four years that built the analytical foundation for everything that followed.</p>
+        </div>
+      </div>
+      <div class="t-item is-milestone reveal" style="--item-accent:#0891b2">
+        <div class="t-year">2013<span class="duration">May, Jun 2013</span></div>
+        <div class="t-content">
+          <span class="t-cat">Internship</span>
+          <h3 class="t-title"><em>AIESEC</em>, Cairo, Egypt</h3>
+          <div class="t-sub">Global Community Development Program</div>
+          <p class="t-desc">Selected for AIESEC&rsquo;s Global Community Development Program. Worked on the <strong>&ldquo;Explore Egypt&rdquo;</strong> tourism project with a local NGO, promoting untapped cultural and tourism experiences across multiple Egyptian cities.</p>
+          <p class="t-desc">Collaborated with cross-cultural teams from diverse nationalities. Created content, blogs, and documentation for a centralised tourism database. Also authored a research paper on <em>&ldquo;Political Crisis and its Impact on Egypt&rsquo;s Economy&rdquo;</em>, analysing macroeconomic shifts in an evolving market.</p>
+          <p class="t-desc">First real exposure to operating in a completely unstructured environment, and to emerging-market dynamics from the ground up.</p>
+        </div>
+      </div>
+      <div class="t-item reveal" style="--item-accent:#7c3aed">
+        <div class="t-year">2013<span class="duration">Dec 2013</span></div>
+        <div class="t-content">
+          <span class="t-cat">Research</span>
+          <h3 class="t-title">National conferences, <em>New Delhi &amp; Chandigarh</em></h3>
+          <div class="t-sub">Policy &amp; Sustainability</div>
+          <p class="t-desc">Presented research papers at national and international conferences on sustainability, governance, and economic development. Co-presented at <strong>Rajiv Gandhi National University of Law (Chandigarh)</strong> on sustainable rural development, and at New Delhi on the role of public vs. private sector in sustainable development.</p>
+        </div>
+      </div>
+      <div class="t-item reveal" style="--item-accent:#7c3aed">
+        <div class="t-year">2014<span class="duration">Jan 2014</span></div>
+        <div class="t-content">
+          <span class="t-cat">Research</span>
+          <h3 class="t-title"><em>ICCKS 2014</em>, Macau</h3>
+          <div class="t-sub">International Conference on Culture, Knowledge &amp; Society</div>
+          <p class="t-desc">Selected for oral presentation at ICCKS 2014, representing India among participants from 20+ countries. Presented <em>&ldquo;Challenges Posed by Rapid Urbanisation and Scarce Resources&rdquo;</em>, focused on sustainability, infrastructure stress, and future urban-development models.</p>
+          <p class="t-desc">Engaged with global researchers and academicians on economic development and policy challenges, an early experience that built foundations in analytical thinking, public speaking, and structured problem-solving.</p>
+        </div>
+      </div>
+      <div class="t-item is-milestone reveal" style="--item-accent:#2563a8">
+        <div class="t-year">2015<span class="duration">Feb 2015, Mar 2026</span></div>
+        <div class="t-content">
+          <span class="t-cat">Retail Franchise</span>
+          <h3 class="t-title">Joined <a href="lenskart.html" class="t-venture-link"><em>Lenskart</em></a> as franchise partner</h3>
+          <div class="t-sub">Surat &middot; The 53rd store</div>
+          <p class="t-desc">Became an early franchise partner, the <strong>53rd store</strong>, while <a href="lenskart.html" class="t-venture-link">Lenskart</a> was still an early-stage startup. Built and scaled a 290 sq ft flagship, growing monthly revenue from &#8377;3L to &#8377;15L+.</p>
+          <p class="t-desc">Spent <strong>11 years</strong> inside a scaling startup, learning how fast-moving consumer brands experiment, optimise, and evolve across pricing, product, and customer experience. Launched a second franchise unit in Gandhidham in 2020.</p>
+        </div>
+      </div>
+      <div class="t-item reveal" style="--item-accent:#d97706">
+        <div class="t-year">2018<span class="duration">Delhi</span></div>
+        <div class="t-content">
+          <span class="t-cat">The moment</span>
+          <h3 class="t-title">The <em>Delhi store</em> moment</h3>
+          <div class="t-sub">&#8377;2,500 spent in a store I didn&rsquo;t plan to enter</div>
+          <p class="t-desc">Walked into a Delhi store after seeing a long queue outside. Walked out spending &#8377;2,500 on products I didn&rsquo;t know I needed. That single question, <em>what just happened in there?</em>, sent me deep into consumer behaviour, impulse buying, and how retail experiences are designed.</p>
+        </div>
+      </div>
+      <div class="t-item is-milestone reveal" style="--item-accent:#b45309">
+        <div class="t-year">2018<span class="duration">Aug 2018, Jun 2021</span></div>
+        <div class="t-content">
+          <span class="t-cat">Fast Fashion</span>
+          <h3 class="t-title">Partnered with <a href="ximivogue.html" class="t-venture-link"><em>Ximivogue</em></a></h3>
+          <div class="t-sub">Vadodara &amp; Surat &middot; 2 flagship stores</div>
+          <p class="t-desc">Acted on observations of impulse-buying behaviour in global lifestyle formats, partnered to bring XIMI VOGUE to Gujarat. Set up two flagship stores (~1400 sq ft each), built from market research through international sourcing.</p>
+          <p class="t-desc">Where the consumer-behaviour thesis was formed, the foundation for everything that came after.</p>
+        </div>
+      </div>
+      <div class="t-item is-milestone reveal" style="--item-accent:#2d6a4f">
+        <div class="t-year">2019<span class="duration">Apr 2019, Present</span></div>
+        <div class="t-content">
+          <span class="t-cat">Clean Energy</span>
+          <h3 class="t-title">Co-founded <a href="pujan-energy.html" class="t-venture-link"><em>Pujan Energy</em></a></h3>
+          <div class="t-sub">Jam Jodhpur, Gujarat &middot; 0.45 MW Solar</div>
+          <p class="t-desc">Co-founded and operate a solar energy venture with 0.45 MW installed capacity, supplying clean power to industrial consumers under Open Access.</p>
+          <p class="t-desc">Led end-to-end execution from land identification and feasibility through commissioning and sustained operations, navigating MSME/Udyog Aadhaar, GETCO, SLDC, and PGVCL approvals.</p>
+        </div>
+      </div>
+      <div class="t-item is-milestone reveal" style="--item-accent:#c45c8a">
+        <div class="t-year">2021<span class="duration">Jul 2021, Mar 2026</span></div>
+        <div class="t-content">
+          <span class="t-cat">Consumer Brand</span>
+          <h3 class="t-title">Co-founded <a href="candy-floss.html" class="t-venture-link"><em>Candy Floss</em></a></h3>
+          <div class="t-sub">Gujarat &middot; 11 stores</div>
+          <p class="t-desc">Pivoted from an import-led model to a Made-in-India private label ecosystem during COVID disruption. Built the brand from scratch, positioning, vendor network, store design, e-commerce, and omni-channel presence.</p>
+          <p class="t-desc">Scaled to <strong>11 stores</strong>, a <strong>200+ vendor network</strong>, and gross margin expansion from ~35% to ~70% through private label and supply-chain control.</p>
+        </div>
+      </div>
+      <div class="t-item is-current reveal" style="--item-accent:#6b5443">
+        <div class="t-year">2026<span class="duration">Today</span></div>
+        <div class="t-content">
+          <span class="t-cat">Today</span>
+          <h3 class="t-title">Operating &amp; <em>building.</em></h3>
+          <div class="t-sub">Ahmedabad, India</div>
+          <p class="t-desc">Running <a href="pujan-energy.html" class="t-venture-link"><strong>Pujan Energy</strong></a> day-to-day, while exploring what comes next, including a long-running curiosity about building something in the <strong>coffee space</strong>.</p>
+          <p class="t-desc">Actively experimenting with AI to simplify workflows and create leverage in daily operations.</p>
+        </div>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Languages -->
+  <section class="j-langs-section">
+    <div class="container">
+      <div class="j-section-head reveal">
+        <div class="section-label">Languages</div>
+        <h2>Four <em>languages,</em><br>three regions.</h2>
+      </div>
+      <div class="j-langs-grid">
+        <div class="j-lang reveal">
+          <div class="j-lang-name">Gujarati</div>
+          <div class="j-lang-level">Native</div>
+          <div class="j-lang-bar"><span style="width: 100%;"></span></div>
+        </div>
+        <div class="j-lang reveal delay-1">
+          <div class="j-lang-name">Hindi</div>
+          <div class="j-lang-level">Fluent</div>
+          <div class="j-lang-bar"><span style="width: 100%;"></span></div>
+        </div>
+        <div class="j-lang reveal delay-2">
+          <div class="j-lang-name">English</div>
+          <div class="j-lang-level">Professional</div>
+          <div class="j-lang-bar"><span style="width: 92%;"></span></div>
+        </div>
+        <div class="j-lang reveal delay-3">
+          <div class="j-lang-name">Marathi</div>
+          <div class="j-lang-level">Conversational</div>
+          <div class="j-lang-bar"><span style="width: 70%;"></span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills + Interests -->
+  <section class="j-section">
+    <div class="container">
+      <div class="j-twocol">
+        <div class="reveal">
+          <div class="section-label">Top skills</div>
+          <div class="j-block-label">What I do, day to day.</div>
+          <ul class="j-list">
+            <li><span class="marker">01</span> Brand Development <span class="desc">0&rarr;1 build, positioning, identity</span></li>
+            <li><span class="marker">02</span> Entrepreneurship <span class="desc">Multi-venture operating</span></li>
+            <li><span class="marker">03</span> E-Commerce <span class="desc">Shopify, marketplaces, D2C</span></li>
+            <li><span class="marker">04</span> Retail Operations <span class="desc">SOPs, P&amp;L, store ops</span></li>
+            <li><span class="marker">05</span> Private Label <span class="desc">OEM, BOM, vendor networks</span></li>
+            <li><span class="marker">06</span> Supply Chain <span class="desc">200+ vendor ecosystem</span></li>
+          </ul>
+        </div>
+        <div class="reveal delay-1">
+          <div class="section-label">Outside work</div>
+          <div class="j-block-label">Where the curiosity goes.</div>
+          <ul class="j-list">
+            <li><span class="marker">&diams;</span> Pour-over coffee <span class="desc">Black, every morning</span></li>
+            <li><span class="marker">&diams;</span> Coffee experimentation <span class="desc">Beans, methods, flavours</span></li>
+            <li><span class="marker">&diams;</span> Podcasts <span class="desc">Business, building, brands</span></li>
+            <li><span class="marker">&diams;</span> Brand teardowns <span class="desc">What works, what doesn&rsquo;t, why</span></li>
+            <li><span class="marker">&diams;</span> AI experimentation <span class="desc">For workflow leverage</span></li>
+            <li><span class="marker">&diams;</span> Conversations <span class="desc">On building, scaling, new ideas</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What's next -->
+  <section class="j-next-up">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-label">What&rsquo;s next</div>
+        <h2>Maybe something in <em>coffee.</em></h2>
+        <p>
+          A long-running curiosity I keep circling back to, whether it&rsquo;s a brand, a roasting setup, or something experiential. My day is incomplete without black coffee, and the consumer-brand muscle from Ximivogue and Candy Floss combined with the operating discipline from Pujan Energy keeps making me wonder what the right shape of that bet looks like.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="j-end">
+    <div class="container">
+      <div class="j-end-eyebrow reveal">Back to</div>
+      <a href="index.html" class="reveal delay-1">
+        <span class="j-end-title">The <em>portfolio</em></span>
+        <span class="j-end-arrow">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </span>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="radhe-section">
+    <hr class="radhe-rule">
+    <span class="radhe-text">|| राधे राधे ||</span>
+    <hr class="radhe-rule">
+  </div>
+  <div class="footer-inner">
+    <span>&copy; <span id="year"></span> Pulkit Viradiya</span>
+    <span class="mark">Built with intent.</span>
+    <span>Ahmedabad, India</span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  const root = document.documentElement;
+  const toggle = document.getElementById('themeToggle');
+  const stored = localStorage.getItem('theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  if (stored) root.setAttribute('data-theme', stored);
+  else if (prefersDark) root.setAttribute('data-theme', 'dark');
+  toggle.addEventListener('click', () => {
+    const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+  });
+  const nav = document.getElementById('nav');
+  const onScroll = () => { nav.classList.toggle('scrolled', window.scrollY > 20); };
+  onScroll(); window.addEventListener('scroll', onScroll, { passive: true });
+  const menuOverlay = document.getElementById('menuOverlay');
+  document.getElementById('menuOpen').addEventListener('click', () => {
+    menuOverlay.classList.add('open'); document.body.style.overflow = 'hidden';
+  });
+  document.getElementById('menuClose').addEventListener('click', () => {
+    menuOverlay.classList.remove('open'); document.body.style.overflow = '';
+  });
+  document.querySelectorAll('[data-menu-link]').forEach(a => a.addEventListener('click', () => {
+    menuOverlay.classList.remove('open'); document.body.style.overflow = '';
+  }));
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { menuOverlay.classList.remove('open'); document.body.style.overflow = ''; } });
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('in'); io.unobserve(entry.target); } });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>

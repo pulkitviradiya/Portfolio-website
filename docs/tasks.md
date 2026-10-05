@@ -1,28 +1,12 @@
 # Tasks
 
-## Current Sprint
+## Current follow-ups
 
-*(Fill in manually)*
+- Optimise the large `pulkit.jpg` portrait used by the About page without
+  changing the approved crop or visible quality.
+- Remove the unused duplicate `Pulkit.jpg` from Git main after confirming no
+  consumers. `.vercelignore` already excludes it from deployment bundles.
+- Review page weight of the illustrated night footer on slow mobile networks.
 
----
-
-## Open issues
-
-| Priority | Task | Detail |
-|---|---|---|
-| Medium | Resize `pulkit.jpg` | 6.1 MB DSLR original is in the public repo; replace with ~500 KB version and update `<img>` in `index.html` |
-| Low | Add `_headers` file | `X-Frame-Options` and `frame-ancestors` need HTTP headers for full clickjacking protection; add `_headers` (Netlify) or `netlify.toml` / `vercel.json` when deploying |
-| Low | Google Fonts SRI | Fonts loaded without `integrity=` hashes; low risk but a future hardening option |
-| Low | Remove `Pulkit.jpg` from git history | Capital-P duplicate is tracked alongside `pulkit.jpg`; removing requires `git filter-branch` or `git-filter-repo` + force push |
-
----
-
-## TODO comments in code
-
-None found as of 2026-06-25 scan.
-
----
-
-## Completed (archived)
-
-See [ARCHIVE.md](../ARCHIVE.md) for the full June 2026 session change log.
+See GitHub branch `archive/pre-concept-2026-10-06` for the former site's task
+list and implementation notes.

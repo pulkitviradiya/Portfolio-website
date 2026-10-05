@@ -1,78 +1,39 @@
 # Architecture
 
-## Folder structure
+## Site
 
-```
-Portfolio-website/
-├── index.html            Homepage — hero, about, ventures grid, contact
-├── journey.html          Long-form career timeline with animated hero
-├── candy-floss.html      Venture case study — Candy Floss fashion brand
-├── lenskart.html         Venture case study — Lenskart franchise
-├── ximivogue.html        Venture case study — Ximivogue brand
-├── pujan-energy.html     Venture case study — Pujan Energy (solar)
-├── pulkit.jpg            Front-facing DSLR portrait (6.1 MB — needs resize)
-├── pulkit-right.jpg      Side-profile portrait, 500×500 px
-├── pujan-solar.jpg       Solar farm cover image, 1920×928 px
-├── lenskart-store.jpg    4-panel store collage, 1920×928 px
-├── favicon.ico           Multi-size ICO (16/32/48 px), memoji
-├── favicon-32x32.png     32×32 PNG favicon
-├── apple-touch-icon.png  180×180 PNG, memoji
-├── .gitignore
-├── CLAUDE.md             AI session instructions and project guide
-├── AGENTS.md             Same as CLAUDE.md, branded for Codex
-├── MEMORY.md             Running session notes and current-state facts
-├── ARCHIVE.md            Historical entries archived from MEMORY.md
-├── README.md             Minimal stub
-└── docs/
-    ├── architecture.md   This file
-    ├── conventions.md    Naming and code conventions
-    └── tasks.md          Open tasks and known issues
-```
+This is a static portfolio with 13 HTML pages at the repository root:
 
-## Tech stack
+- Home: `index.html`
+- Work and story: `work.html`, `journey.html`, `about.html`, `off-duty.html`
+- Early chapters: `education.html`, `cairo.html`, `research.html`
+- Ventures: `candy-floss.html`, `pujan-energy.html`, `lenskart.html`,
+  `ximivogue.html`, `ps-coffee.html`
 
-| Technology | Role | Reason |
-|---|---|---|
-| Plain HTML | Page structure | No build step needed; site is content-only |
-| Inline CSS (`<style>`) | All styling per page | Self-contained files, no shared stylesheet |
-| Inline JS (`<script>`) | All behaviour per page | No framework, no bundler |
-| CSS custom properties | Design tokens (colours, spacing, fonts) | Enables dark mode without class duplication |
-| Google Fonts | `Cormorant Garamond` + `Inter` | Matches editorial, refined aesthetic |
-| `IntersectionObserver` | Scroll-triggered reveal animations | Native browser API, no library required |
-| Python PIL | Image processing (offline, not in site) | Cover-crop, colour grading, favicon generation |
+Each page is standalone: styles are in a `<style>` element and JavaScript is
+inline near the end of `<body>`. This preserves direct local-file previews and
+requires no runtime framework or backend.
 
-## Design tokens (`:root`)
+## Build source
 
-| Token | Light value | Dark value | Purpose |
-|---|---|---|---|
-| `--bg` | `#f3f1ea` | `#161614` | Page background |
-| `--bg-deep` | `#ebe8df` | `#1f1f1d` | Inset / card background |
-| `--bg-card` | `#ffffff` | `#1f1f1d` | Card surfaces |
-| `--ink` | `#1a1a1a` | `#f3f1ea` | Primary text |
-| `--ink-soft` | `#4a4a4a` | `#c9c6bd` | Secondary text |
-| `--ink-mute` | `#8a8a85` | `#7a7872` | Muted / labels |
-| `--line` | `#d8d4c8` | `#484840` | Dividers, borders |
-| `--accent` | `#6b5443` | `#c69a7a` | Warm brown highlight |
-| `--serif` | `Cormorant Garamond` | same | Headings, pull quotes |
-| `--sans` | `Inter` | same | Body, nav, labels |
-| `--maxw` | `1240px` | — | Max content width |
-| `--pad` | `clamp(1.25rem, 4vw, 2.5rem)` | — | Horizontal page padding |
-| `--section-pad` | `clamp(4rem, 9vw, 7rem)` | — | Vertical section spacing |
+`concept-build.py --production` generates all production HTML files. It inlines
+`concept-style.css`, `concept-editorial.css`, `concept-script.js`, and
+`concept-editorial.js`, and uses `concept-icons.json` for SVG icons. Running the
+same script without flags generates ignored `concept-*.html` review pages.
 
-## Third-party services
+The builder reads detailed case-study and timeline content from frozen
+`legacy-source/*.html` files. These inputs are not production pages. The entire
+former site is preserved on the remote Git branch
+`archive/pre-concept-2026-10-06` and in a local tar archive noted in
+`AGENTS.md`.
 
-| Service | Usage |
-|---|---|
-| Google Fonts (fonts.googleapis.com) | Serves `Cormorant Garamond` and `Inter` at runtime |
-| LinkedIn (linkedin.com) | Outbound profile link only — no data exchanged |
+## Assets and deployment
 
-No backend, no database, no analytics, no tracking, no CMS.
+Images, icons, and self-hosted WOFF2 fonts live at the root. The Latin fonts are
+Instrument Serif and Space Grotesk; Hindi uses Tiro Devanagari Hindi, Gujarati
+uses Rasa. Font and icon licenses are stored beside the assets.
 
-## Security
-
-Three meta tags on every page (added 2026-06-25):
-- **CSP** — `default-src 'self'`, restricts fonts to Google, blocks connect/form/base injection
-- **Referrer-Policy** — `strict-origin-when-cross-origin`
-- **Permissions-Policy** — camera, mic, geolocation, payment all disabled
-
-Note: `X-Frame-Options` / `frame-ancestors` require HTTP headers, not meta tags. Add via `_headers` file if deploying to Netlify/Vercel.
+GitHub `main` is linked to Vercel project `portfolio-website`. The public
+domain is `www.pulkitviradiya.in`. `.vercelignore` excludes source files,
+preview HTML, and frozen legacy inputs from the static deployment. The
+generated pages remain the deployable root output.
